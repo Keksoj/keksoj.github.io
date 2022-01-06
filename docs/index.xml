@@ -8,10 +8,10 @@
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>Hello World!</title>
-    <link>http://example.org/helloworld/</link>
+    <link>http://example.org/2022/helloworld/</link>
     <pubDate>Thu, 06 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>http://example.org/helloworld/</guid>
+    <guid>http://example.org/2022/helloworld/</guid>
     <description><![CDATA[This is my very first blog post to test out the Hugo framework.]]></description>
 </item></channel>
 </rss>
