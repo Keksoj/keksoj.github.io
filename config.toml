@@ -52,7 +52,7 @@ enableEmoji = true
         # you can add extra information after the name (HTML format is supported), such as icons
         post = ""
         name = "Posts"
-        url = "http://keksoj.github.io/blog/posts/"
+        url = "/posts/"
         # title will be shown when you hover on this menu link.
         title = ""
         weight = 1
@@ -61,7 +61,7 @@ enableEmoji = true
         pre = ""
         post = ""
         name = "Tags"
-        url = "http://keksoj.github.io/blog/tags/"
+        url = "/tags/"
         title = ""
         weight = 2
       [[languages.en.menu.main]]
@@ -77,7 +77,7 @@ enableEmoji = true
         pre = ""
         post = ""
         name = "About"
-        url = "http://keksoj.github.io/blog/about/"
+        url = "/about/"
         title = ""
         weight = 5
       [[languages.en.menu.main]]
