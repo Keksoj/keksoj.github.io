@@ -7,4 +7,4 @@ date: "2022-01-06"
 #   publishResources: false
 ---
 
-Oh hi
+This is my very first blog post to test out the Hugo framework.

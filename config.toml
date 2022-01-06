@@ -147,7 +147,7 @@ enableEmoji = true
           # title shown in home page (HTML format is supported)
           title = ""
           # subtitle shown in home page
-          subtitle = "A Clean, Elegant but Advanced Hugo Theme"
+          subtitle = "A blog to write about technology"
           # whether to use typeit animation for subtitle
           typeit = true
           # whether to show social links
@@ -372,30 +372,7 @@ enableEmoji = true
       Twitter = true
       Facebook = true
       Linkedin = false
-      Whatsapp = false
-      Pinterest = false
-      Tumblr = false
-      HackerNews = true
-      Reddit = false
-      VK = false
       Buffer = false
-      Xing = false
-      Line = true
-      Instapaper = false
-      Pocket = false
-      Digg = false
-      Stumbleupon = false
-      Flipboard = false
-      Weibo = true
-      Renren = false
-      Myspace = false
-      Blogger = false
-      Baidu = false
-      Odnoklassniki = false
-      Evernote = false
-      Skype = false
-      Trello = false
-      Mix = false
     # Comment config
     # 评论系统设置
     [params.page.comment]
@@ -625,9 +602,9 @@ enableEmoji = true
 # Author config
 # 作者配置
 [author]
-  name = "xxxx"
-  email = ""
-  link = ""
+  name = "Emmanuel Bosquet"
+  email = "bjokac@gmail.com"
+  link = "https://emmanuelbosquet.com"
 
 # Sitemap config
 # 网站地图配置
