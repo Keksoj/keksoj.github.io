@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>All Posts - Keksoj blog</title>
-        <link>https://keksoj.github.io/blog/posts/</link>
+        <link>emmanuelbosquet.com/posts/</link>
         <description>All Posts | Keksoj blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>bjokac@gmail.com (Emmanuel Bosquet)</managingEditor>
-            <webMaster>bjokac@gmail.com (Emmanuel Bosquet)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 06 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://keksoj.github.io/blog/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>bjokac@gmail.com (Emmanuel Bosquet)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 06 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="emmanuelbosquet.com/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Hello World!</title>
-    <link>https://keksoj.github.io/blog/2022/helloworld/</link>
+    <link>emmanuelbosquet.com/2022/helloworld/</link>
     <pubDate>Thu, 06 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://keksoj.github.io/blog/2022/helloworld/</guid>
+    <guid>emmanuelbosquet.com/2022/helloworld/</guid>
     <description><![CDATA[This is my very first blog post to test out the Hugo framework.]]></description>
 </item></channel>
 </rss>
