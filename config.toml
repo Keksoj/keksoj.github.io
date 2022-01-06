@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = '/'
 languageCode = 'en-us'
 
 # for github pages deployment, we have to replace the default "public" with "docs"
