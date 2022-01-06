@@ -12,6 +12,6 @@
     <pubDate>Thu, 06 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>http://example.org/helloworld/</guid>
-    <description><![CDATA[Oh hi]]></description>
+    <description><![CDATA[This is my very first blog post to test out the Hugo framework.]]></description>
 </item></channel>
 </rss>

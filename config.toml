@@ -1,6 +1,9 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
 
+# for github pages deployment, we have to replace the default "public" with "docs"
+publishdir = "docs"
+
 # [en, zh-cn, fr, pl, ...] determines default content language
 # [en, zh-cn, fr, pl, ...] 设置默认的语言
 defaultContentLanguage = "en"
