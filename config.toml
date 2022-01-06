@@ -1,4 +1,4 @@
-baseURL = '/blog'
+baseURL = 'https://keksoj.github.io/blog'
 languageCode = 'en-us'
 
 # for github pages deployment, we have to replace the default "public" with "docs"
