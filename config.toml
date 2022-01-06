@@ -4,6 +4,7 @@ languageCode = 'en-us'
 # for github pages deployment, we have to replace the default "public" with "docs"
 publishdir = "docs"
 
+
 # [en, zh-cn, fr, pl, ...] determines default content language
 # [en, zh-cn, fr, pl, ...] 设置默认的语言
 defaultContentLanguage = "en"
@@ -168,6 +169,9 @@ enableEmoji = true
         RSS = true
 
 [params]
+  # my custom CSS
+  custom_css = ["css/custom.css"]
+
   # LoveIt theme version
   # LoveIt 主题版本
   version = "0.2.X"

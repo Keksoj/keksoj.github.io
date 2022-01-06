@@ -1,0 +1,6 @@
+.archive-item-date {
+    /* changing witch from 4em to 6em */
+    width: 6em;
+    text-align: right;
+    color: #a9a9b3;
+}

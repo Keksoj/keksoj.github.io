@@ -16,3 +16,19 @@ especially made for chinese language enthousiasts:
   hiddenFromHomePage = false
 ```
 
+### Custom CSS
+
+Can I input this custom CSS somewhere ?
+
+```css
+.archive-item-date {
+    /* changing witch from 4em to 6em */
+    width: 6em;
+    text-align: right;
+    color: #a9a9b3;
+}
+```
+
+I tried putting this custom css into `/assets/css/custom.css` but it failed.
+So I changed the LoveIt theme directly.
+This is bad. Don't do this at home, kids.
