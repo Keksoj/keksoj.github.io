@@ -219,7 +219,14 @@ fn main() -> anyhow::Result<()> {
 
 ## Writing on the socket, client side
 
-We need to import the `Read` and `Write` traits, and now we can write onto the stream.
+We need to import the `Read` and `Write` traits.
+
+```rust
+// src/bin/client.rs
+use std::io::{Read, Write};
+```
+
+And now we can write onto the stream.
 Below the `unix_stream` declaration, add the write logic:
 
 ```rust
@@ -292,6 +299,8 @@ Introducing the same reading logic we used on the server **will not work**. Why?
 After writing on a stream, we need to shut down the writing, if we want to read from it.
 
 Let's segregate the write and read logic into distinct functions.
+Oh, and we pass mutable references (`&mut`) of the unix stream to the function, because… Rust.
+Don't worry about it.
 
 ```rust
 // src/bin/client.rs
@@ -351,7 +360,6 @@ fn read_from_stream(unix_stream: &mut UnixStream) -> anyhow::Result<()> {
 
 Have the server running in a terminal:
 
-    rm mysocket
     cargo run --bin server
 
 And in a separate terminal, run the client:

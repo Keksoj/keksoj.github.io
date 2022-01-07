@@ -12,7 +12,7 @@ Here are the questions, summed up:
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/2022/whatsaunixsocket/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-06T18:51:20+01:00" />
-<meta property="article:modified_time" content="2022-01-07T15:43:28+01:00" />
+<meta property="article:modified_time" content="2022-01-07T18:23:44+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
@@ -33,8 +33,8 @@ Here are the questions, summed up:
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/2022\/whatsaunixsocket\/"
-        },"image": ["\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  1397 ,
-        "url": "\/2022\/whatsaunixsocket\/","datePublished": "2022-01-06T18:51:20+01:00","dateModified": "2022-01-07T15:43:28+01:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  1420 ,
+        "url": "\/2022\/whatsaunixsocket\/","datePublished": "2022-01-06T18:51:20+01:00","dateModified": "2022-01-07T18:23:44+01:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -110,7 +110,7 @@ Here are the questions, summed up:
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Unix sockets, the basics in Rust</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://emmanuelbosquet.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Emmanuel Bosquet</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-06">2022-01-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1397 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-06">2022-01-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1420 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;<span id="/2022/whatsaunixsocket/" class="leancloud_visitors" data-flag-title="Unix sockets, the basics in Rust">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
@@ -434,7 +434,18 @@ The client will merely consist of a <code>UnixStream</code>:</p>
 </span></code></pre></td></tr></table>
 </div>
 </div><h2 id="writing-on-the-socket-client-side">Writing on the socket, client side</h2>
-<p>We need to import the <code>Read</code> and <code>Write</code> traits, and now we can write onto the stream.
+<p>We need to import the <code>Read</code> and <code>Write</code> traits.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="c1">// src/bin/client.rs
+</span><span class="c1"></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">io</span>::<span class="p">{</span><span class="n">Read</span><span class="p">,</span><span class="w"> </span><span class="n">Write</span><span class="p">};</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>And now we can write onto the stream.
 Below the <code>unix_stream</code> declaration, add the write logic:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -536,7 +547,9 @@ Below the <code>unix_stream</code> declaration, add the write logic:</p>
 </div><h2 id="listen-to-responses-client-side">Listen to responses, client side</h2>
 <p>Introducing the same reading logic we used on the server <strong>will not work</strong>. Why?
 After writing on a stream, we need to shut down the writing, if we want to read from it.</p>
-<p>Let&rsquo;s segregate the write and read logic into distinct functions.</p>
+<p>Let&rsquo;s segregate the write and read logic into distinct functions.
+Oh, and we pass mutable references (<code>&amp;mut</code>) of the unix stream to the function, because… Rust.
+Don&rsquo;t worry about it.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -640,8 +653,7 @@ Write below the main function:</p>
 </div>
 </div><h3 id="launch-the-whole-thing-again">Launch the whole thing, again!</h3>
 <p>Have the server running in a terminal:</p>
-<pre><code>rm mysocket
-cargo run --bin server
+<pre><code>cargo run --bin server
 </code></pre>
 <p>And in a separate terminal, run the client:</p>
 <pre><code>cargo run --bin client
@@ -672,8 +684,8 @@ who allows me to learn my job in the best possible conditions. Much gratitude.</
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-01-07&nbsp;<a class="git-hash" href="https://github.com/keksoj/blog/commit/52db414fd5e76ecd491e852fb6ddfe8335f57350" target="_blank" title="commit by Emmanuel Bosquet(bjokac@gmail.com) 52db414fd5e76ecd491e852fb6ddfe8335f57350: unix socket tutorial, ongoing">
-                                    <i class="fas fa-hashtag fa-fw"></i>52db414</a></span>
+                <span>Updated on 2022-01-07&nbsp;<a class="git-hash" href="https://github.com/keksoj/blog/commit/169fe859f0f7a93d965976dda897b82527f9e0bc" target="_blank" title="commit by Emmanuel Bosquet(bjokac@gmail.com) 169fe859f0f7a93d965976dda897b82527f9e0bc: correction to the unix socket tutorial">
+                                    <i class="fas fa-hashtag fa-fw"></i>169fe85</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
