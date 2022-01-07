@@ -6,9 +6,9 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Unix sockets, the basics in Rust - Keksoj blog</title><meta name="Description" content="About LoveIt Theme"><meta property="og:title" content="Unix sockets, the basics in Rust" />
-<meta property="og:description" content="I found myself wondering about unix sockets while working on Sozu, a reverse proxy written in Rust. A bunch of Sōzu issues led me to dig into Sōzu channels, which themselves make use of Metal I/O &rsquo;s implementation of unix sockets.
-Here the questions, summed up:
- what is a unix socket? how can we create one in Rust? how do we use it to stream data?  So here we go." />
+<meta property="og:description" content="I found myself wondering about unix sockets while working on Sōzu, a reverse proxy written in Rust. A bunch of Sōzu issues led me to dig into Sōzu channels, which themselves make use of Metal I/O &rsquo;s implementation of unix sockets.
+Here are the questions, summed up:
+ what are unix sockets? how can we create them in Rust? how do we use them to stream data?  So here we go." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/2022/whatsaunixsocket/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-06T18:51:20+01:00" />
@@ -18,9 +18,9 @@ Here the questions, summed up:
 <meta name="twitter:image" content="/logo.png"/>
 
 <meta name="twitter:title" content="Unix sockets, the basics in Rust"/>
-<meta name="twitter:description" content="I found myself wondering about unix sockets while working on Sozu, a reverse proxy written in Rust. A bunch of Sōzu issues led me to dig into Sōzu channels, which themselves make use of Metal I/O &rsquo;s implementation of unix sockets.
-Here the questions, summed up:
- what is a unix socket? how can we create one in Rust? how do we use it to stream data?  So here we go."/>
+<meta name="twitter:description" content="I found myself wondering about unix sockets while working on Sōzu, a reverse proxy written in Rust. A bunch of Sōzu issues led me to dig into Sōzu channels, which themselves make use of Metal I/O &rsquo;s implementation of unix sockets.
+Here are the questions, summed up:
+ what are unix sockets? how can we create them in Rust? how do we use them to stream data?  So here we go."/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -33,7 +33,7 @@ Here the questions, summed up:
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/2022\/whatsaunixsocket\/"
-        },"image": ["\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  918 ,
+        },"image": ["\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  1397 ,
         "url": "\/2022\/whatsaunixsocket\/","datePublished": "2022-01-06T18:51:20+01:00","dateModified": "2022-01-07T15:43:28+01:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "\/images\/avatar.png"},"author": {
@@ -110,8 +110,8 @@ Here the questions, summed up:
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Unix sockets, the basics in Rust</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://emmanuelbosquet.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Emmanuel Bosquet</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-06">2022-01-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;918 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;<span id="/2022/whatsaunixsocket/" class="leancloud_visitors" data-flag-title="Unix sockets, the basics in Rust">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-06">2022-01-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1397 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;<span id="/2022/whatsaunixsocket/" class="leancloud_visitors" data-flag-title="Unix sockets, the basics in Rust">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -128,36 +128,42 @@ Here the questions, summed up:
     <li><a href="#create-a-socket-server-side">Create a socket, server side</a></li>
     <li><a href="#waiting-for-connections-server-side">Waiting for connections, server side</a></li>
     <li><a href="#connecting-to-the-socket-client-side">Connecting to the socket, client side</a></li>
-    <li><a href="#writing-onto-the-socket-client-side">Writing onto the socket, client side</a></li>
+    <li><a href="#writing-on-the-socket-client-side">Writing on the socket, client side</a></li>
     <li><a href="#reading-from-the-socket-server-side">Reading from the socket, server side</a>
       <ul>
         <li><a href="#launch-the-whole-thing">Launch the whole thing!</a></li>
       </ul>
     </li>
-    <li><a href="#the-associated-repository">The associated repository</a></li>
+    <li><a href="#respond-to-a-message-server-side">Respond to a message, server side</a></li>
+    <li><a href="#listen-to-responses-client-side">Listen to responses, client side</a>
+      <ul>
+        <li><a href="#launch-the-whole-thing-again">Launch the whole thing, again!</a></li>
+      </ul>
+    </li>
+    <li><a href="#browse-the-code">Browse the code</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>I found myself wondering about unix sockets
-while working on <a href="https://github.com/sozu-proxy/sozu" target="_blank" rel="noopener noreffer">Sozu</a>,
+while working on <a href="https://github.com/sozu-proxy/sozu" target="_blank" rel="noopener noreffer">Sōzu</a>,
 a reverse proxy written in Rust.
 A bunch of Sōzu issues led me to
 <a href="https://github.com/Keksoj/stream_stuff_on_a_sozu_channel" target="_blank" rel="noopener noreffer">dig into Sōzu channels</a>,
 which themselves make use of
 <a href="https://tokio-rs.github.io/mio/doc/mio/net/struct.UnixListener.html" target="_blank" rel="noopener noreffer">Metal I/O &rsquo;s implementation of unix sockets</a>.</p>
-<p>Here the questions, summed up:</p>
+<p>Here are the questions, summed up:</p>
 <ul>
-<li>what is a unix socket?</li>
-<li>how can we create one in Rust?</li>
-<li>how do we use it to stream data?</li>
+<li>what are unix sockets?</li>
+<li>how can we create them in Rust?</li>
+<li>how do we use them to stream data?</li>
 </ul>
 <p>So here we go.</p>
 <h2 id="what-is-a-unix-socket">What is a unix socket?</h2>
 <p>It is <em>not</em> a web socket like <code>127.0.0.1:8080</code>.</p>
 <p>You may have heard that in unix,
-<a href="https://www.wikiwand.com/en/Everything_is_a_file" target="_blank" rel="noopener noreffer">everything is a file</a>.
+<a href="https://www.youtube.com/watch?v=dDwXnB6XeiA" target="_blank" rel="noopener noreffer">everything is a file</a>.
 Unix sockets seem to be a good example of this principle.
-They are empty files of sorts, only there to be written onto, and read from.</p>
-<p>Sockets seem to be a core feature of unix. In fact, if you type</p>
+They are empty files of sorts, only there to be written to, and read from.</p>
+<p>Sockets are a core feature of unix. In fact, if you type</p>
 <pre><code>man unix
 </code></pre>
 <p>in your terminal, you should land on an ancient man page:</p>
@@ -186,18 +192,21 @@ sockets are created and used by processes, not by users.
 Looking up how to create one will land you on a tutorial in C, or in python.
 So let&rsquo;s see how to do it in Rust.</p>
 <h1 id="make-a-socket-server-in-rust">Make a socket server in Rust</h1>
-<p>The Rust standard library has a <a href="https://doc.rust-lang.org/std/os/unix/index.html" target="_blank" rel="noopener noreffer">unix module</a>
-that contains modules to interact with unix processes, unix files, and so on.
-Within this unix module, we want to look at the <code>net</code> module,
-because unix sockets are used to do networking between processes.</p>
+<p>The Rust standard library has a <a href="https://doc.rust-lang.org/std/os/unix/index.html" target="_blank" rel="noopener noreffer">std::os::unix module</a>
+to interact with unix processes, unix files, and so on.
+Within it, we want to look at the <code>net</code> module,
+named that way because unix sockets are used to do networking between processes.</p>
 <p>The <code>std::os::unix::net</code> module contains, among other things:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/std/os/unix/net/struct.UnixListener.html" target="_blank" rel="noopener noreffer"><code>UnixListener</code></a></li>
 <li><a href="https://doc.rust-lang.org/std/os/unix/net/struct.UnixStream.html" target="_blank" rel="noopener noreffer"><code>UnixStream</code></a></li>
 </ul>
 <p>Both those entities are unsafe wrappers of the <code>libc</code> library to perform the very same unix system calls you would write in C.
-They both wrap a unix file descriptor, but they are distinct in order to separate higher-level concerns.
-<code>UnixListener</code> is used to create sockets, <code>UnixStream</code> is there to read from and write on them.</p>
+They both wrap a unix file descriptor, but they are distinct in order to separate higher-level concerns.</p>
+<ul>
+<li><code>UnixListener</code> is used to create sockets, (<code>libc::bind()</code> and <code>libc::listen()</code>)</li>
+<li><code>UnixStream</code> is there to connect to a socket (<code>libc::connect()</code>), to read from it and write on it.</li>
+</ul>
 <p>Let&rsquo;s use those.
 <a href="https://www.rust-lang.org/tools/install" target="_blank" rel="noopener noreffer">Install Rust and Cargo</a>,
 <a href="https://doc.rust-lang.org/book/" target="_blank" rel="noopener noreffer">Learn the basics of Rust</a>,
@@ -273,18 +282,66 @@ Caused by:
 </code></pre></td></tr></table>
 </div>
 </div><p>I guess we&rsquo;ll have to destroy it and recreate it each time.</p>
-<pre><code>rm mysocket
-</code></pre>
-<h2 id="waiting-for-connections-server-side">Waiting for connections, server side</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="c1">// src/bin/server.rs
+</span><span class="c1"></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">os</span>::<span class="n">unix</span>::<span class="n">net</span>::<span class="p">{</span><span class="n">UnixListener</span><span class="p">,</span><span class="w"> </span><span class="n">UnixStream</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">anyhow</span>::<span class="n">Context</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nc">anyhow</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">socket_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;mysocket&#34;</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="c1">// copy-paste this and don&#39;t think about it anymore
+</span><span class="c1"></span><span class="w">    </span><span class="c1">// it will be hidden from there on
+</span><span class="c1"></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">std</span>::<span class="n">fs</span>::<span class="n">metadata</span><span class="p">(</span><span class="n">socket_path</span><span class="p">).</span><span class="n">is_ok</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;A socket is already present. Deleting...&#34;</span><span class="p">);</span><span class="w">
+</span><span class="w">        </span><span class="n">std</span>::<span class="n">fs</span>::<span class="n">remove_file</span><span class="p">(</span><span class="n">socket_path</span><span class="p">).</span><span class="n">with_context</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="fm">format!</span><span class="p">(</span><span class="s">&#34;could not delete previous socket at {:?}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">socket_path</span><span class="p">)</span><span class="w">
+</span><span class="w">        </span><span class="p">})</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">unix_listener</span><span class="w"> </span><span class="o">=</span><span class="w">
+</span><span class="w">        </span><span class="n">UnixListener</span>::<span class="n">bind</span><span class="p">(</span><span class="n">socket_path</span><span class="p">).</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Could not create the unix socket&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="waiting-for-connections-server-side">Waiting for connections, server side</h2>
 <p>The <code>UnixListener</code> struct has an <code>accept()</code> method that waits for other processes to connect to the socket.
-Once a connections come, <code>accept()</code> returns a tuple containing a <code>UnixStream</code> and a <code>SocketAddr</code>.</p>
+Once a connections comes, <code>accept()</code> returns a tuple containing a <code>UnixStream</code> and a <code>SocketAddr</code>.</p>
 <p>As mentioned above, <code>UnixStream</code> implements <code>Read</code> and <code>Write</code>.
 We will handle this stream to:</p>
 <ul>
-<li>read what another process would write on the socket</li>
-<li>write responses</li>
+<li>read what another process will send through the socket</li>
+<li>write responses on the socket</li>
 </ul>
-<p>Complete the code:</p>
+<p>Add the loop and the <code>handle_stream</code> function to the server code:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -321,7 +378,8 @@ We will handle this stream to:</p>
 </span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">unix_listener</span><span class="w"> </span><span class="o">=</span><span class="w">
 </span><span class="w">        </span><span class="n">UnixListener</span>::<span class="n">bind</span><span class="p">(</span><span class="n">socket_path</span><span class="p">).</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Could not create the unix socket&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
 </span><span class="w">
-</span><span class="w">    </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="c1">// put the server logic in a loop to accept several connections
+</span><span class="c1"></span><span class="w">    </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">unix_stream</span><span class="p">,</span><span class="w"> </span><span class="n">socket_address</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unix_listener</span><span class="w">
 </span><span class="w">            </span><span class="p">.</span><span class="n">accept</span><span class="p">()</span><span class="w">
 </span><span class="w">            </span><span class="p">.</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Failed at accepting a connection on the unix listener&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
@@ -331,15 +389,13 @@ We will handle this stream to:</p>
 </span><span class="w"></span><span class="p">}</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="k">fn</span> <span class="nf">handle_stream</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">stream</span>: <span class="nc">UnixStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">anyhow</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span><span class="w">
 </span><span class="w">    </span><span class="c1">// to be filled
 </span><span class="c1"></span><span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span><span class="w">
 </span><span class="w"></span><span class="p">}</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>Remove the existing socket and run the code:</p>
-<pre><code>rm mysocket
-cargo run --bin server
+<pre><code>cargo run --bin server
 </code></pre>
 <p>it should hang.
 Perfect! The server is waiting for connections!</p>
@@ -360,6 +416,7 @@ The client will merely consist of a <code>UnixStream</code>:</p>
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
+</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="c1">// src/bin/client.rs
@@ -370,52 +427,25 @@ The client will merely consist of a <code>UnixStream</code>:</p>
 </span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nc">anyhow</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">socket_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;mysocket&#34;</span><span class="p">;</span><span class="w">
 </span><span class="w">
-</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">unix_stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UnixStream</span>::<span class="n">connect</span><span class="p">(</span><span class="n">socket_path</span><span class="p">).</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Could not create stream&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">unix_stream</span><span class="w"> </span><span class="o">=</span><span class="w">
+</span><span class="w">        </span><span class="n">UnixStream</span>::<span class="n">connect</span><span class="p">(</span><span class="n">socket_path</span><span class="p">).</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Could not create stream&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
 </span><span class="w">
 </span><span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><h2 id="writing-onto-the-socket-client-side">Writing onto the socket, client side</h2>
+</div><h2 id="writing-on-the-socket-client-side">Writing on the socket, client side</h2>
 <p>We need to import the <code>Read</code> and <code>Write</code> traits, and now we can write onto the stream.
-Complete the code:</p>
+Below the <code>unix_stream</code> declaration, add the write logic:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="c1">// src/bin/client.rs
-</span><span class="c1"></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">io</span>::<span class="p">{</span><span class="n">Read</span><span class="p">,</span><span class="w"> </span><span class="n">Write</span><span class="p">};</span><span class="w">
-</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">os</span>::<span class="n">unix</span>::<span class="n">net</span>::<span class="p">{</span><span class="n">UnixListener</span><span class="p">,</span><span class="w"> </span><span class="n">UnixStream</span><span class="p">};</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">anyhow</span>::<span class="n">Context</span><span class="p">;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nc">anyhow</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">socket_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;mysocket&#34;</span><span class="p">;</span><span class="w">
-</span><span class="w">
-</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">unix_stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UnixStream</span>::<span class="n">connect</span><span class="p">(</span><span class="n">socket_path</span><span class="p">).</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Could not create stream&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
-</span><span class="w">
-</span><span class="w">    </span><span class="n">unix_stream</span><span class="w">
-</span><span class="w">        </span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">b&#34;Hello?&#34;</span><span class="p">)</span><span class="w">       </span><span class="c1">// we write bytes &amp;[u8]
-</span><span class="c1"></span><span class="w">        </span><span class="p">.</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Failed at writing onto the unix stream&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
-</span><span class="w">
-</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span><span class="w">
-</span><span class="w"></span><span class="p">}</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="n">unix_stream</span><span class="w">
+</span><span class="w">    </span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">b&#34;Hello?&#34;</span><span class="p">)</span><span class="w">       </span><span class="c1">// we write bytes, &amp;[u8]
+</span><span class="c1"></span><span class="w">    </span><span class="p">.</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Failed at writing onto the unix stream&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><h2 id="reading-from-the-socket-server-side">Reading from the socket, server side</h2>
@@ -446,9 +476,9 @@ Complete the code:</p>
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="c1">// src/bin/server.rs
-</span><span class="c1"></span><span class="k">fn</span> <span class="nf">handle_stream</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">stream</span>: <span class="nc">UnixStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">anyhow</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="c1"></span><span class="k">fn</span> <span class="nf">handle_stream</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">unix_stream</span>: <span class="nc">UnixStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">anyhow</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">new</span><span class="p">();</span><span class="w">
-</span><span class="w">    </span><span class="n">stream</span><span class="w">
+</span><span class="w">    </span><span class="n">unix_stream</span><span class="w">
 </span><span class="w">        </span><span class="p">.</span><span class="n">read_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w">
 </span><span class="w">        </span><span class="p">.</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Failed at reading the unix stream&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
 </span><span class="w">
@@ -459,31 +489,191 @@ Complete the code:</p>
 </div>
 </div><h3 id="launch-the-whole-thing">Launch the whole thing!</h3>
 <p>Make sure you have the server running in a terminal:</p>
+<pre><code>cargo run --bin server
+</code></pre>
+<p>And in a separate terminal, run the client:</p>
+<pre><code>cargo run --bin client
+</code></pre>
+<p>If all is well, the hello message should display on the server side.</p>
+<h2 id="respond-to-a-message-server-side">Respond to a message, server side</h2>
+<p>Let&rsquo;s answer something every time the server receives anything.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="c1">// src/bin/server.rs
+</span><span class="c1"></span><span class="k">fn</span> <span class="nf">handle_stream</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">unix_stream</span>: <span class="nc">UnixStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">anyhow</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">new</span><span class="p">();</span><span class="w">
+</span><span class="w">    </span><span class="n">unix_stream</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">read_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Failed at reading the unix stream&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;We received this message: {}\nReplying...&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="n">unix_stream</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">b&#34;I hear you!&#34;</span><span class="p">)</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Failed at writing onto the unix stream&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="listen-to-responses-client-side">Listen to responses, client side</h2>
+<p>Introducing the same reading logic we used on the server <strong>will not work</strong>. Why?
+After writing on a stream, we need to shut down the writing, if we want to read from it.</p>
+<p>Let&rsquo;s segregate the write and read logic into distinct functions.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="c1">// src/bin/client.rs
+</span><span class="c1"></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">io</span>::<span class="p">{</span><span class="n">Read</span><span class="p">,</span><span class="w"> </span><span class="n">Write</span><span class="p">};</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">os</span>::<span class="n">unix</span>::<span class="n">net</span>::<span class="p">{</span><span class="n">UnixListener</span><span class="p">,</span><span class="w"> </span><span class="n">UnixStream</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">anyhow</span>::<span class="n">Context</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nc">anyhow</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">socket_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;mysocket&#34;</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">unix_stream</span><span class="w"> </span><span class="o">=</span><span class="w">
+</span><span class="w">        </span><span class="n">UnixStream</span>::<span class="n">connect</span><span class="p">(</span><span class="n">socket_path</span><span class="p">).</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Could not create stream&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="n">write_request_and_shutdown</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">unix_stream</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="n">read_from_stream</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">unix_stream</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>The <code>shutdown()</code> method takes a <code>Shutdown</code> enum we would otherwise use on TCP streams.
+Write below the main function:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="k">fn</span> <span class="nf">write_request_and_shutdown</span><span class="p">(</span><span class="n">unix_stream</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">UnixStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">anyhow</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">unix_stream</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">b&#34;Hello?&#34;</span><span class="p">)</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Failed at writing onto the unix stream&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;We sent a request&#34;</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;Shutting down writing on the stream, waiting for response...&#34;</span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="n">unix_stream</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">shutdown</span><span class="p">(</span><span class="n">std</span>::<span class="n">net</span>::<span class="n">Shutdown</span>::<span class="n">Write</span><span class="p">)</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Could not shutdown writing on the stream&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>The stream is now clean to be read from.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="k">fn</span> <span class="nf">read_from_stream</span><span class="p">(</span><span class="n">unix_stream</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">UnixStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">anyhow</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">new</span><span class="p">();</span><span class="w">
+</span><span class="w">    </span><span class="n">unix_stream</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">read_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">context</span><span class="p">(</span><span class="s">&#34;Failed at reading the unix stream&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;We received this response: {}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="launch-the-whole-thing-again">Launch the whole thing, again!</h3>
+<p>Have the server running in a terminal:</p>
 <pre><code>rm mysocket
 cargo run --bin server
 </code></pre>
 <p>And in a separate terminal, run the client:</p>
 <pre><code>cargo run --bin client
 </code></pre>
-<p>If all is well, the hello message should display on the server side.</p>
-<h2 id="the-associated-repository">The associated repository</h2>
-<p>This tutorial comes with a <a href="https://github.com/Keksoj/unix_socket_based_server_client" target="_blank" rel="noopener noreffer">github repository</a>
-with a little <a href="https://github.com/Keksoj/unix_socket_based_server_client/blob/main/src/socket.rs" target="_blank" rel="noopener noreffer">custom-made socket library</a>
-that does the automatic deletion and some more things like setting permissions.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">
-</code></pre></td></tr></table>
-</div>
-</div></div><div class="post-footer" id="post-footer">
+<p>If all is well,</p>
+<ul>
+<li>the hello message should display on the server side</li>
+<li>the &ldquo;I hear you&rdquo; response should display on the client side</li>
+</ul>
+<p>You can run the client as many times as you want, since the server runs in a loop.</p>
+<h2 id="browse-the-code">Browse the code</h2>
+<p>This tutorial comes with a <a href="https://github.com/Keksoj/unix_sockets_basics" target="_blank" rel="noopener noreffer">github repository</a>
+that contains the above code.</p>
+<p>Feel free to write an issue for any comment, cricic or complaint you may have.
+Fork and do pull requests as you please.</p>
+<p>This blog post is a sum-up of what I learned trying to understand unix sockets while working on Sōzu.
+A more elaborate version of the code is available
+<a href="https://github.com/Keksoj/unix_socket_based_server_client" target="_blank" rel="noopener noreffer">in this other repo</a>,
+with additional features:</p>
+<ul>
+<li>a <code>UnixListener</code>-wrapping library with a glorious <code>SocketBuilder</code> helper (permissions! blocking/nonblocking!)</li>
+<li>a <code>Message</code> module with serializable <code>Request</code> and <code>Response</code> structs. The Response has a status that is either <code>Ok</code>, <code>Error</code> or <code>Processing</code></li>
+<li>a client loop that continues reading the stream as long as responses come with a <code>Processing</code> status, to stops only at <code>Ok</code> or <code>Error</code></li>
+</ul>
+<p>All this happened thanks to my employer, <a href="clever-cloud.com/" rel="">Clever Cloud</a>,
+who allows me to learn my job in the best possible conditions. Much gratitude.</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-01-07&nbsp;<a class="git-hash" href="https://github.com/keksoj/blog/commit/872eaa26a72c71abc0c542a1434bd7ca0a6c5dd5" target="_blank" title="commit by Emmanuel Bosquet(bjokac@gmail.com) 872eaa26a72c71abc0c542a1434bd7ca0a6c5dd5: unix socket tutorial, ongoing">
-                                    <i class="fas fa-hashtag fa-fw"></i>872eaa2</a></span>
+                <span>Updated on 2022-01-07&nbsp;<a class="git-hash" href="https://github.com/keksoj/blog/commit/52db414fd5e76ecd491e852fb6ddfe8335f57350" target="_blank" title="commit by Emmanuel Bosquet(bjokac@gmail.com) 52db414fd5e76ecd491e852fb6ddfe8335f57350: unix socket tutorial, ongoing">
+                                    <i class="fas fa-hashtag fa-fw"></i>52db414</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>

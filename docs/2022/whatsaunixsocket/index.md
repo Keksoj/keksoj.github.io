@@ -2,18 +2,18 @@
 
 
 I found myself wondering about unix sockets
-while working on [Sozu](https://github.com/sozu-proxy/sozu),
+while working on [Sōzu](https://github.com/sozu-proxy/sozu),
 a reverse proxy written in Rust.
 A bunch of Sōzu issues led me to
 [dig into Sōzu channels](https://github.com/Keksoj/stream_stuff_on_a_sozu_channel),
 which themselves make use of
 [Metal I/O 's implementation of unix sockets](https://tokio-rs.github.io/mio/doc/mio/net/struct.UnixListener.html).
 
-Here the questions, summed up:
+Here are the questions, summed up:
 
--   what is a unix socket?
--   how can we create one in Rust?
--   how do we use it to stream data?
+-   what are unix sockets?
+-   how can we create them in Rust?
+-   how do we use them to stream data?
 
 So here we go.
 
@@ -22,11 +22,11 @@ So here we go.
 It is _not_ a web socket like `127.0.0.1:8080`.
 
 You may have heard that in unix,
-[everything is a file](https://www.wikiwand.com/en/Everything_is_a_file).
+[everything is a file](https://www.youtube.com/watch?v=dDwXnB6XeiA).
 Unix sockets seem to be a good example of this principle.
-They are empty files of sorts, only there to be written onto, and read from.
+They are empty files of sorts, only there to be written to, and read from.
 
-Sockets seem to be a core feature of unix. In fact, if you type
+Sockets are a core feature of unix. In fact, if you type
 
     man unix
 
@@ -52,10 +52,10 @@ So let's see how to do it in Rust.
 
 # Make a socket server in Rust
 
-The Rust standard library has a [unix module](https://doc.rust-lang.org/std/os/unix/index.html)
-that contains modules to interact with unix processes, unix files, and so on.
-Within this unix module, we want to look at the `net` module,
-because unix sockets are used to do networking between processes.
+The Rust standard library has a [std::os::unix module](https://doc.rust-lang.org/std/os/unix/index.html)
+to interact with unix processes, unix files, and so on.
+Within it, we want to look at the `net` module,
+named that way because unix sockets are used to do networking between processes.
 
 The `std::os::unix::net` module contains, among other things:
 
@@ -64,7 +64,9 @@ The `std::os::unix::net` module contains, among other things:
 
 Both those entities are unsafe wrappers of the `libc` library to perform the very same unix system calls you would write in C.
 They both wrap a unix file descriptor, but they are distinct in order to separate higher-level concerns.
-`UnixListener` is used to create sockets, `UnixStream` is there to read from and write on them.
+
+-   `UnixListener` is used to create sockets, (`libc::bind()` and `libc::listen()`)
+-   `UnixStream` is there to connect to a socket (`libc::connect()`), to read from it and write on it.
 
 Let's use those.
 [Install Rust and Cargo](https://www.rust-lang.org/tools/install),
@@ -122,20 +124,43 @@ Caused by:
 
 I guess we'll have to destroy it and recreate it each time.
 
-    rm mysocket
+```rust
+// src/bin/server.rs
+use std::os::unix::net::{UnixListener, UnixStream};
+
+use anyhow::Context;
+
+fn main() -> anyhow::Result<()> {
+    let socket_path = "mysocket";
+
+    // copy-paste this and don't think about it anymore
+    // it will be hidden from there on
+    if std::fs::metadata(socket_path).is_ok() {
+        println!("A socket is already present. Deleting...");
+        std::fs::remove_file(socket_path).with_context(|| {
+            format!("could not delete previous socket at {:?}", socket_path)
+        })?;
+    }
+
+    let unix_listener =
+        UnixListener::bind(socket_path).context("Could not create the unix socket")?;
+
+    Ok(())
+}
+```
 
 ## Waiting for connections, server side
 
 The `UnixListener` struct has an `accept()` method that waits for other processes to connect to the socket.
-Once a connections come, `accept()` returns a tuple containing a `UnixStream` and a `SocketAddr`.
+Once a connections comes, `accept()` returns a tuple containing a `UnixStream` and a `SocketAddr`.
 
 As mentioned above, `UnixStream` implements `Read` and `Write`.
 We will handle this stream to:
 
--   read what another process would write on the socket
--   write responses
+-   read what another process will send through the socket
+-   write responses on the socket
 
-Complete the code:
+Add the loop and the `handle_stream` function to the server code:
 
 ```rust
 // src/bin/server.rs
@@ -147,6 +172,7 @@ fn main() -> anyhow::Result<()> {
     let unix_listener =
         UnixListener::bind(socket_path).context("Could not create the unix socket")?;
 
+    // put the server logic in a loop to accept several connections
     loop {
         let (mut unix_stream, socket_address) = unix_listener
             .accept()
@@ -157,7 +183,6 @@ fn main() -> anyhow::Result<()> {
 }
 
 fn handle_stream(mut stream: UnixStream) -> anyhow::Result<()> {
-
     // to be filled
     Ok(())
 }
@@ -165,7 +190,6 @@ fn handle_stream(mut stream: UnixStream) -> anyhow::Result<()> {
 
 Remove the existing socket and run the code:
 
-    rm mysocket
     cargo run --bin server
 
 it should hang.
@@ -187,34 +211,21 @@ use anyhow::Context;
 fn main() -> anyhow::Result<()> {
     let socket_path = "mysocket";
 
-    let mut unix_stream = UnixStream::connect(socket_path).context("Could not create stream")?;
+    let mut unix_stream =
+        UnixStream::connect(socket_path).context("Could not create stream")?;
 
     Ok(())
 ```
 
-## Writing onto the socket, client side
+## Writing on the socket, client side
 
 We need to import the `Read` and `Write` traits, and now we can write onto the stream.
-Complete the code:
+Below the `unix_stream` declaration, add the write logic:
 
 ```rust
-// src/bin/client.rs
-use std::io::{Read, Write};
-use std::os::unix::net::{UnixListener, UnixStream};
-
-use anyhow::Context;
-
-fn main() -> anyhow::Result<()> {
-    let socket_path = "mysocket";
-
-    let mut unix_stream = UnixStream::connect(socket_path).context("Could not create stream")?;
-
-    unix_stream
-        .write(b"Hello?")       // we write bytes &[u8]
-        .context("Failed at writing onto the unix stream")?;
-
-    Ok(())
-}
+unix_stream
+    .write(b"Hello?")       // we write bytes, &[u8]
+    .context("Failed at writing onto the unix stream")?;
 ```
 
 ## Reading from the socket, server side
@@ -230,9 +241,9 @@ Now let's fill the `handle_stream` function with ordinary read logic:
 
 ```rust
 // src/bin/server.rs
-fn handle_stream(mut stream: UnixStream) -> anyhow::Result<()> {
+fn handle_stream(mut unix_stream: UnixStream) -> anyhow::Result<()> {
     let mut message = String::new();
-    stream
+    unix_stream
         .read_to_string(&mut message)
         .context("Failed at reading the unix stream")?;
 
@@ -245,7 +256,6 @@ fn handle_stream(mut stream: UnixStream) -> anyhow::Result<()> {
 
 Make sure you have the server running in a terminal:
 
-    rm mysocket
     cargo run --bin server
 
 And in a separate terminal, run the client:
@@ -254,13 +264,124 @@ And in a separate terminal, run the client:
 
 If all is well, the hello message should display on the server side.
 
-## The associated repository
+## Respond to a message, server side
 
-This tutorial comes with a [github repository](https://github.com/Keksoj/unix_socket_based_server_client)
-with a little [custom-made socket library](https://github.com/Keksoj/unix_socket_based_server_client/blob/main/src/socket.rs)
-that does the automatic deletion and some more things like setting permissions.
+Let's answer something every time the server receives anything.
+
+```rust
+// src/bin/server.rs
+fn handle_stream(mut unix_stream: UnixStream) -> anyhow::Result<()> {
+    let mut message = String::new();
+    unix_stream
+        .read_to_string(&mut message)
+        .context("Failed at reading the unix stream")?;
+
+    println!("We received this message: {}\nReplying...", message);
+
+    unix_stream
+        .write(b"I hear you!")
+        .context("Failed at writing onto the unix stream")?;
+
+    Ok(())
+}
+```
+
+## Listen to responses, client side
+
+Introducing the same reading logic we used on the server **will not work**. Why?
+After writing on a stream, we need to shut down the writing, if we want to read from it.
+
+Let's segregate the write and read logic into distinct functions.
+
+```rust
+// src/bin/client.rs
+use std::io::{Read, Write};
+use std::os::unix::net::{UnixListener, UnixStream};
+
+use anyhow::Context;
+
+fn main() -> anyhow::Result<()> {
+    let socket_path = "mysocket";
+
+    let mut unix_stream =
+        UnixStream::connect(socket_path).context("Could not create stream")?;
+
+    write_request_and_shutdown(&mut unix_stream)?;
+    read_from_stream(&mut unix_stream)?;
+    Ok(())
+}
+```
+
+The `shutdown()` method takes a `Shutdown` enum we would otherwise use on TCP streams.
+Write below the main function:
+
+```rust
+fn write_request_and_shutdown(unix_stream: &mut UnixStream) -> anyhow::Result<()> {
+    unix_stream
+        .write(b"Hello?")
+        .context("Failed at writing onto the unix stream")?;
+
+    println!("We sent a request");
+    println!("Shutting down writing on the stream, waiting for response...");
+
+    unix_stream
+        .shutdown(std::net::Shutdown::Write)
+        .context("Could not shutdown writing on the stream")?;
+
+    Ok(())
+}
 
 ```
 
+The stream is now clean to be read from.
+
+```rust
+fn read_from_stream(unix_stream: &mut UnixStream) -> anyhow::Result<()> {
+    let mut response = String::new();
+    unix_stream
+        .read_to_string(&mut response)
+        .context("Failed at reading the unix stream")?;
+
+    println!("We received this response: {}", response);
+    Ok(())
+}
 ```
+
+### Launch the whole thing, again!
+
+Have the server running in a terminal:
+
+    rm mysocket
+    cargo run --bin server
+
+And in a separate terminal, run the client:
+
+    cargo run --bin client
+
+If all is well,
+
+-   the hello message should display on the server side
+-   the "I hear you" response should display on the client side
+
+You can run the client as many times as you want, since the server runs in a loop.
+
+## Browse the code
+
+This tutorial comes with a [github repository](https://github.com/Keksoj/unix_sockets_basics)
+that contains the above code.
+
+Feel free to write an issue for any comment, cricic or complaint you may have.
+Fork and do pull requests as you please.
+
+This blog post is a sum-up of what I learned trying to understand unix sockets while working on Sōzu.
+A more elaborate version of the code is available
+[in this other repo](https://github.com/Keksoj/unix_socket_based_server_client),
+with additional features:
+
+-   a `UnixListener`-wrapping library with a glorious `SocketBuilder` helper (permissions! blocking/nonblocking!)
+-   a `Message` module with serializable `Request` and `Response` structs. The Response has a status that is either `Ok`, `Error` or `Processing`
+-   a client loop that continues reading the stream as long as responses come with a `Processing` status, to stops only at `Ok` or `Error`
+
+All this happened thanks to my employer, [Clever Cloud](clever-cloud.com/),
+who allows me to learn my job in the best possible conditions. Much gratitude.
 
