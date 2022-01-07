@@ -14,8 +14,7 @@
     <guid>/2022/whatsaunixsocket/</guid>
     <description><![CDATA[I found myself wondering about unix sockets while working on Sozu, a reverse proxy written in Rust. A bunch of Sōzu issues led me to dig into Sōzu channels, which themselves make use of Metal I/O &rsquo;s implementation of unix sockets.
 Here the questions, summed up:
- what is a unix socket? what is a unix listener? what is a unix stream?  So here we go.
-What is a unix socket?]]></description>
+ what is a unix socket? how can we create one in Rust? how do we use it to stream data?  So here we go.]]></description>
 </item><item>
     <title>Hello World!</title>
     <link>/2022/helloworld/</link>
