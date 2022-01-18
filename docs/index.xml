@@ -25,5 +25,14 @@ Here are the questions, summed up:
 I couldn&rsquo;t stand pretending to be a healthy human being, so here is the truth.
 (born 1986)
  2004 - 2005, Caen, Normandy. First year of a Physics Measurements degree. Failed spectacularly. 2007-10 - 2007-12, Stuttgart, Germany. Wandering in Germany searching for a job. 2008-10 - 2009-03, Heidelberg, Germany. Learning japanese at the university hoping to work in Japan.]]></description>
+</item><item>
+    <title>Rust, ou le plaisir de coder</title>
+    <link>/2021/rustouleplaisirdecoder/</link>
+    <pubDate>Thu, 28 Oct 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/2021/rustouleplaisirdecoder/</guid>
+    <description><![CDATA[Voici la conférence que j&rsquo;ai animée au CaenCamp en octobre 2021, où je passe en revue les bases de Rust, au compilateur très pédagogique.
+  En plus de la vidéo, retrouvez :
+ Les slides en ligne Le dépôt github avec tous le code présenté, et plus encore  ]]></description>
 </item></channel>
 </rss>
