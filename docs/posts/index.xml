@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - Keksoj blog</title>
+        <title>All Posts - Emmanuel Bosquet</title>
         <link>/posts/</link>
-        <description>All Posts | Keksoj blog</description>
+        <description>All Posts | Emmanuel Bosquet</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>bjokac@gmail.com (Emmanuel Bosquet)</managingEditor>
             <webMaster>bjokac@gmail.com (Emmanuel Bosquet)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 06 Jan 2022 18:51:20 &#43;0100</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Unix sockets, the basics in Rust</title>
@@ -14,11 +14,14 @@
 Here are the questions, summed up:
  what are unix sockets? how can we create them in Rust? how do we use them to stream data?  So here we go.]]></description>
 </item><item>
-    <title>Hello World!</title>
-    <link>/2022/helloworld/</link>
-    <pubDate>Thu, 06 Jan 2022 00:00:00 &#43;0000</pubDate>
+    <title>My resume but it&#39;s only the gaps</title>
+    <link>/2021/myresumebutitsonlythegaps/</link>
+    <pubDate>Tue, 30 Nov 2021 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>/2022/helloworld/</guid>
-    <description><![CDATA[This is my very first blog post to test out the Hugo framework.]]></description>
+    <guid>/2021/myresumebutitsonlythegaps/</guid>
+    <description><![CDATA[This is an answer to all those recruiters asking &ldquo;How do you explain this gap in your resume?&rdquo;.
+I couldn&rsquo;t stand pretending to be a healthy human being, so here is the truth.
+(born 1986)
+ 2004 - 2005, Caen, Normandy. First year of a Physics Measurements degree. Failed spectacularly. 2007-10 - 2007-12, Stuttgart, Germany. Wandering in Germany searching for a job. 2008-10 - 2009-03, Heidelberg, Germany. Learning japanese at the university hoping to work in Japan.]]></description>
 </item></channel>
 </rss>
