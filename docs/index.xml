@@ -34,5 +34,15 @@ I couldn&rsquo;t stand pretending to be a healthy human being, so here is the tr
     <description><![CDATA[Voici la conférence que j&rsquo;ai animée au CaenCamp en octobre 2021, où je passe en revue les bases de Rust, au compilateur très pédagogique.
   En plus de la vidéo, retrouvez :
  Les slides en ligne Le dépôt github avec tous le code présenté, et plus encore  ]]></description>
+</item><item>
+    <title>Tetris in the browser</title>
+    <link>/2020/tetrisinthebrowser/</link>
+    <pubDate>Wed, 25 Nov 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/2020/tetrisinthebrowser/</guid>
+    <description><![CDATA[One day I understood I could write javascript the proper way :
+ object-oriented with separate files with JSdocs types as far away from the HTML as possible  AND have it work in the browser.
+So I ported my dear tetris logic I had written in Rust for the terminal into the browser, using canvas.
+Play it here. I&rsquo;m afraid it only works on the desktop, and it may be buggy, but hey I made a tetris, how awesome is that?]]></description>
 </item></channel>
 </rss>
