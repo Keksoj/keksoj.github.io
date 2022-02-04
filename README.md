@@ -32,3 +32,12 @@ Can I input this custom CSS somewhere ?
 I tried putting this custom css into `/assets/css/custom.css` but it failed.
 So I changed the LoveIt theme directly.
 This is bad. Don't do this at home, kids.
+
+### To clone the repo
+
+There is a submodule attached, so be sure to try:
+
+    git clone --recurse-submodules git@github.com:Keksoj/Keksoj.github.io.git
+
+Check that hugo is installed on the machine.
+It is packaged for Arch at least.
