@@ -16,7 +16,7 @@ Well I&rsquo;ve got just the workflow for you :
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/2022/awesome_pdf_with_eisvogel/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-02-17T23:59:45+01:00" />
-<meta property="article:modified_time" content="2022-02-20T16:45:46+01:00" />
+<meta property="article:modified_time" content="2022-02-20T17:19:58+01:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
@@ -41,8 +41,8 @@ Well I&rsquo;ve got just the workflow for you :
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/2022\/awesome_pdf_with_eisvogel\/"
-        },"image": ["\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  1924 ,
-        "url": "\/2022\/awesome_pdf_with_eisvogel\/","datePublished": "2022-02-17T23:59:45+01:00","dateModified": "2022-02-20T16:45:46+01:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  1719 ,
+        "url": "\/2022\/awesome_pdf_with_eisvogel\/","datePublished": "2022-02-17T23:59:45+01:00","dateModified": "2022-02-20T17:19:58+01:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -118,8 +118,8 @@ Well I&rsquo;ve got just the workflow for you :
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">How to make awesome PDFs with markdown using Eisvogel</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://emmanuelbosquet.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Emmanuel Bosquet</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-17">2022-02-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1924 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-17">2022-02-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1719 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;9 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -328,135 +328,7 @@ like the very important <code>\documentclass</code> line that basically says:
 <p>And boom ! Your <code>README.tex</code> looks a whole lot different now,
 with a <code>\documentClass{article}</code> and a lot of <code>\usepackage</code> statements and so on.
 That will make a neat PDF later on.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="c">% Options for packages loaded elsewhere
-</span><span class="c"></span><span class="k">\PassOptionsToPackage</span><span class="nb">{</span>unicode<span class="nb">}{</span>hyperref<span class="nb">}</span>
-<span class="k">\PassOptionsToPackage</span><span class="nb">{</span>hyphens<span class="nb">}{</span>url<span class="nb">}</span>
-<span class="c">%
-</span><span class="c"></span><span class="k">\documentclass</span>[
-]<span class="nb">{</span>article<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>amsmath,amssymb<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>lmodern<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>iftex<span class="nb">}</span>
-<span class="k">\ifPDFTeX</span>
-  <span class="k">\usepackage</span><span class="na">[T1]</span><span class="nb">{</span>fontenc<span class="nb">}</span>
-  <span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
-  <span class="k">\usepackage</span><span class="nb">{</span>textcomp<span class="nb">}</span> <span class="c">% provide euro and other symbols
-</span><span class="c"></span><span class="k">\else</span> <span class="c">% if luatex or xetex
-</span><span class="c"></span>  <span class="k">\usepackage</span><span class="nb">{</span>unicode-math<span class="nb">}</span>
-  <span class="k">\defaultfontfeatures</span><span class="nb">{</span>Scale=MatchLowercase<span class="nb">}</span>
-  <span class="k">\defaultfontfeatures</span><span class="na">[\rmfamily]</span><span class="nb">{</span>Ligatures=TeX,Scale=1<span class="nb">}</span>
-<span class="k">\fi</span>
-<span class="c">% Use upquote if available, for straight quotes in verbatim environments
-</span><span class="c"></span><span class="k">\IfFileExists</span><span class="nb">{</span>upquote.sty<span class="nb">}{</span><span class="k">\usepackage</span><span class="nb">{</span>upquote<span class="nb">}}{}</span>
-<span class="k">\IfFileExists</span><span class="nb">{</span>microtype.sty<span class="nb">}{</span><span class="c">% use microtype if available
-</span><span class="c"></span>  <span class="k">\usepackage</span><span class="na">[]</span><span class="nb">{</span>microtype<span class="nb">}</span>
-  <span class="k">\UseMicrotypeSet</span><span class="na">[protrusion]</span><span class="nb">{</span>basicmath<span class="nb">}</span> <span class="c">% disable protrusion for tt fonts
-</span><span class="c"></span><span class="nb">}{}</span>
-<span class="k">\makeatletter</span>
-<span class="k">\@</span>ifundefined<span class="nb">{</span>KOMAClassName<span class="nb">}{</span><span class="c">% if non-KOMA class
-</span><span class="c"></span>  <span class="k">\IfFileExists</span><span class="nb">{</span>parskip.sty<span class="nb">}{</span><span class="c">%
-</span><span class="c"></span>    <span class="k">\usepackage</span><span class="nb">{</span>parskip<span class="nb">}</span>
-  <span class="nb">}{</span><span class="c">% else
-</span><span class="c"></span>    <span class="k">\setlength</span><span class="nb">{</span><span class="k">\parindent</span><span class="nb">}{</span>0pt<span class="nb">}</span>
-    <span class="k">\setlength</span><span class="nb">{</span><span class="k">\parskip</span><span class="nb">}{</span>6pt plus 2pt minus 1pt<span class="nb">}}</span>
-<span class="nb">}{</span><span class="c">% if KOMA class
-</span><span class="c"></span>  <span class="k">\KOMAoptions</span><span class="nb">{</span>parskip=half<span class="nb">}}</span>
-<span class="k">\makeatother</span>
-<span class="k">\usepackage</span><span class="nb">{</span>xcolor<span class="nb">}</span>
-<span class="k">\IfFileExists</span><span class="nb">{</span>xurl.sty<span class="nb">}{</span><span class="k">\usepackage</span><span class="nb">{</span>xurl<span class="nb">}}{}</span> <span class="c">% add URL line breaks if available
-</span><span class="c"></span><span class="k">\IfFileExists</span><span class="nb">{</span>bookmark.sty<span class="nb">}{</span><span class="k">\usepackage</span><span class="nb">{</span>bookmark<span class="nb">}}{</span><span class="k">\usepackage</span><span class="nb">{</span>hyperref<span class="nb">}}</span>
-<span class="k">\hypersetup</span><span class="nb">{</span>
-  hidelinks,
-  pdfcreator=<span class="nb">{</span>LaTeX via pandoc<span class="nb">}}</span>
-<span class="k">\urlstyle</span><span class="nb">{</span>same<span class="nb">}</span> <span class="c">% disable monospaced font for URLs
-</span><span class="c"></span><span class="k">\setlength</span><span class="nb">{</span><span class="k">\emergencystretch</span><span class="nb">}{</span>3em<span class="nb">}</span> <span class="c">% prevent overfull lines
-</span><span class="c"></span><span class="k">\providecommand</span><span class="nb">{</span><span class="k">\tightlist</span><span class="nb">}{</span><span class="c">%
-</span><span class="c"></span>  <span class="k">\setlength</span><span class="nb">{</span><span class="k">\itemsep</span><span class="nb">}{</span>0pt<span class="nb">}</span><span class="k">\setlength</span><span class="nb">{</span><span class="k">\parskip</span><span class="nb">}{</span>0pt<span class="nb">}}</span>
-<span class="k">\setcounter</span><span class="nb">{</span>secnumdepth<span class="nb">}{</span>-<span class="k">\maxdimen</span><span class="nb">}</span> <span class="c">% remove section numbering
-</span><span class="c"></span><span class="k">\ifLuaTeX</span>
-  <span class="k">\usepackage</span><span class="nb">{</span>selnolig<span class="nb">}</span>  <span class="c">% disable illegal ligatures
-</span><span class="c"></span><span class="k">\fi</span>
-
-<span class="k">\author</span><span class="nb">{}</span>
-<span class="k">\date</span><span class="nb">{}</span>
-
-<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-
-<span class="k">\hypertarget</span><span class="nb">{</span>my-awesome-pdf-project<span class="nb">}{</span><span class="c">%
-</span><span class="c"></span><span class="k">\section</span><span class="nb">{</span>My awesome PDF project<span class="nb">}</span><span class="k">\label</span><span class="nb">{</span>my-awesome-pdf-project<span class="nb">}}</span>
-
-This simple readme shall become a PDF, or my name is not
-emmanuel.
-
-<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="pandoc-uses-templates">Pandoc uses templates</h3>
+<h3 id="pandoc-uses-templates">Pandoc uses templates</h3>
 <p>What happened here? Well, the mission of pandoc is to convert from one markup to another.
 A markdown&rsquo;s <code>*word*</code> becomes an HTML <code>&lt;em&gt;word&lt;/em&gt;</code> becomes a TeX <code>\emph{word}</code>.
 Pretty straightforward.</p>
@@ -630,8 +502,8 @@ Be kind to yourself.</p>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-02-20&nbsp;<a class="git-hash" href="https://github.com/keksoj/blog/commit/50e958687da02f2ed196bc9f87aefdd7563a570c" target="_blank" title="commit by Emmanuel Bosquet(bjokac@gmail.com) 50e958687da02f2ed196bc9f87aefdd7563a570c: eisvogel tutorial">
-                                    <i class="fas fa-hashtag fa-fw"></i>50e9586</a></span>
+                <span>Updated on 2022-02-20&nbsp;<a class="git-hash" href="https://github.com/keksoj/blog/commit/a4909d31e8e4d45b0fca5663c4a8f1fdd331d3b7" target="_blank" title="commit by Emmanuel Bosquet(bjokac@gmail.com) a4909d31e8e4d45b0fca5663c4a8f1fdd331d3b7: github pages errored on {% so I removed it">
+                                    <i class="fas fa-hashtag fa-fw"></i>a4909d3</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
