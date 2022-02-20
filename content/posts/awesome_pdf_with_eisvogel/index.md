@@ -176,7 +176,7 @@ Please type:
 and have a look at `README.tex`:
 
 ```latex
-\hypertarget{my-awesome-pdf-project}{%
+\hypertarget{my-awesome-pdf-project}
 \section{My awesome PDF project}\label{my-awesome-pdf-project}}
 This simple readme shall become a PDF, or my name is not emmanuel.
 ```
