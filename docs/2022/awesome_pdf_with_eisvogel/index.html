@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>How to make awesome PDFs with markdown using Eisvogel - Emmanuel Bosquet</title><meta name="Description" content="About LoveIt Theme"><meta property="og:title" content="How to make awesome PDFs with markdown using Eisvogel" />
+<meta property="og:description" content="Are you like me?
+Do you hate WYSIWYG document editors like Word, Page, or LibreOffice Writer?
+Are you more of a markdown person?
+Do you like text-based projects?
+Being a linux hardcore freak (or a wanabee linux hardcore freak), are you unafraid of the command line?
+Well I&rsquo;ve got just the workflow for you :
+ Write in markdown Generate a PDF with black magic Conquer the world  Let&rsquo;s dive in this together, in a drunken and self-deprecating mindset, otherwise it won&rsquo;t be fun." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2022/awesome_pdf_with_eisvogel/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-17T23:59:45+01:00" />
+<meta property="article:modified_time" content="2022-02-20T16:45:46+01:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="How to make awesome PDFs with markdown using Eisvogel"/>
+<meta name="twitter:description" content="Are you like me?
+Do you hate WYSIWYG document editors like Word, Page, or LibreOffice Writer?
+Are you more of a markdown person?
+Do you like text-based projects?
+Being a linux hardcore freak (or a wanabee linux hardcore freak), are you unafraid of the command line?
+Well I&rsquo;ve got just the workflow for you :
+ Write in markdown Generate a PDF with black magic Conquer the world  Let&rsquo;s dive in this together, in a drunken and self-deprecating mindset, otherwise it won&rsquo;t be fun."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/2022/awesome_pdf_with_eisvogel/" /><link rel="prev" href="/2022/whatsaunixsocket/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "How to make awesome PDFs with markdown using Eisvogel",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/2022\/awesome_pdf_with_eisvogel\/"
+        },"image": ["\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  1924 ,
+        "url": "\/2022\/awesome_pdf_with_eisvogel\/","datePublished": "2022-02-17T23:59:45+01:00","dateModified": "2022-02-20T16:45:46+01:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Emmanuel Bosquet"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Emmanuel Bosquet"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>Keksoj blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Emmanuel Bosquet"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>Keksoj blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">How to make awesome PDFs with markdown using Eisvogel</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://emmanuelbosquet.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Emmanuel Bosquet</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-17">2022-02-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1924 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#install-pandoc">Install Pandoc</a></li>
+    <li><a href="#install-latex-and-join-the-real-cult">Install LaTeX and join the real cult</a>
+      <ul>
+        <li><a href="#installing-latex-or-how-to-download-way-too-heavy-packages">Installing LaTeX, or how to download way too heavy packages</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#write-in-markdown">Write in markdown</a></li>
+    <li><a href="#get-started-with-pandoc">Get started with pandoc</a></li>
+    <li><a href="#how-pandoc-converts-markdown-to-pdf">How pandoc converts markdown to PDF</a>
+      <ul>
+        <li><a href="#from-markdown-to-latex">From markdown to LaTeX</a></li>
+        <li><a href="#pandoc-uses-templates">Pandoc uses templates</a></li>
+        <li><a href="#from-latex-to-pdf">From LaTeX to PDF</a></li>
+        <li><a href="#to-sum-up-what-pandoc-does">To sum up what pandoc does</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#step-by-step">Step by step</a></li>
+    <li><a href="#go-on-your-own-journey">Go on your own journey</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Are you like me?<br>
+Do you hate WYSIWYG document editors like Word, Page, or LibreOffice Writer?<br>
+Are you more of a markdown person?<br>
+Do you like text-based projects?<br>
+Being a linux hardcore freak (or a wanabee linux hardcore freak), are you unafraid of the command line?</p>
+<p>Well I&rsquo;ve got just the workflow for you :</p>
+<ol>
+<li>Write in markdown</li>
+<li>Generate a PDF with black magic</li>
+<li>Conquer the world</li>
+</ol>
+<p>Let&rsquo;s dive in this together, in a drunken and self-deprecating mindset, otherwise it won&rsquo;t be fun.</p>
+<h2 id="install-pandoc">Install Pandoc</h2>
+<p><a href="https://pandoc.org/" target="_blank" rel="noopener noreffer">Pandoc</a> is a crazy swiss-army knife haskell-written library
+that converts any markup-formatted document into another markup-formatted document.
+Pandoc converts html into json, man pages into html, epubs into docx, csv into dokuwiki,
+aaaaannnd markdown into PDF !</p>
+<p>Install pandoc using your favorite package manager,
+on <a href="https://zoomadmin.com/HowToInstall/UbuntuPackage/pandoc" target="_blank" rel="noopener noreffer">ubuntu or anything debian-based</a>,
+on arch linux with the <code>pandoc</code> package,
+on <a href="https://pandoc.org/installing.html#macos" target="_blank" rel="noopener noreffer">macOS</a> if you&rsquo;re brave.
+According to some legends, you can even install it <a href="https://pandoc.org/installing.html#windows" target="_blank" rel="noopener noreffer">on windows</a>.</p>
+<p>But that&rsquo;s just the easy part.</p>
+<h2 id="install-latex-and-join-the-real-cult">Install LaTeX and join the real cult</h2>
+<p>Enter LaTeX, one of the oldest peaces of software still in use today.
+LaTeX started a bit like the GNU project.
+Some nitpicking bloke with too many free time on his hands and a lot of brain cells to burn
+decided that his book was not properly typeset.
+Yes, a guy actually complained about spacing between letters, margins around text,
+that kind of thing ordinary folks never worry about.
+So this <a href="https://www.wikiwand.com/en/Donald_Knuth" target="_blank" rel="noopener noreffer">Donald</a> (yes, that&rsquo;s his name, Donald Knuth)
+did what every (in)sane computer freak does:
+he went on to invent his own thing to solve his problem.</p>
+<p>His typesetting system is called <code>TeX</code>, pronounced &ldquo;tek&rdquo;, and went on to be wrapped and renamed
+and repackaged in an obscure way only encyclopedias and annoying know-it-alls understand.
+What we talk about now is <code>LaTeX</code>, but you have to pronounce it &ldquo;latek&rdquo; or you can&rsquo;t be part of the gang.
+We&rsquo;re in the freak zone.</p>
+<p>LaTeX is the king of markup languages,
+theoretically it is even turing-compatible, with <code>if</code> statements and whatnot.<br>
+LaTeX is the assembly of document composing.<br>
+LaTeX is the language of the gods.</p>
+<p>One example. This latex-written formula:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex">s<span class="nb">_</span>N = <span class="k">\sqrt</span><span class="nb">{</span><span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>N<span class="nb">}</span> <span class="k">\sum</span><span class="nb">_{</span>i=1<span class="nb">}^</span>N <span class="k">\left</span>(x<span class="nb">_</span>i - <span class="k">\bar</span><span class="nb">{</span>x<span class="nb">}</span><span class="k">\right</span>)<span class="nb">^</span>2<span class="nb">}</span>.
+</code></pre></td></tr></table>
+</div>
+</div><p>becomes</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/2022/awesome_pdf_with_eisvogel/images/standard_deviation.png"
+        data-srcset="/2022/awesome_pdf_with_eisvogel/images/standard_deviation.png, /2022/awesome_pdf_with_eisvogel/images/standard_deviation.png 1.5x, /2022/awesome_pdf_with_eisvogel/images/standard_deviation.png 2x"
+        data-sizes="auto"
+        alt="/2022/awesome_pdf_with_eisvogel/images/standard_deviation.png"
+        title="standard deviation" /></p>
+<p>You can&rsquo;t really beat that.</p>
+<p>We will need LaTeX.
+There&rsquo;s no way around that if we want to brag in the classroom and impress… no one actually.
+No one will care. But let&rsquo;s do it anyway.</p>
+<h3 id="installing-latex-or-how-to-download-way-too-heavy-packages">Installing LaTeX, or how to download way too heavy packages</h3>
+<p>There&rsquo;s no easy way around this.
+Tex and LaTeX are <em>heavy</em>.</p>
+<ul>
+<li>For Arch Linux fans: <code>sudo pacman -S texlive-most</code></li>
+<li><a href="https://fahim-sikder.github.io/post/installing-texlive-latest-ubuntu/" target="_blank" rel="noopener noreffer">ubuntu instructions</a></li>
+</ul>
+<p>Chances are,
+those command won&rsquo;t work and you&rsquo;ll end up searching the internet like a lost soul,
+deseperate for a way to understand how any of this is supposed to work.
+As a rule of thumb, install anything that ends with <code>ex</code>, be it <code>pdflatex</code> or <code>xelatex</code> or <code>texlive</code> and so on.
+You should get around 5 GB of packages to install.<br>
+Yes.<br>
+I told you we&rsquo;re in the freak zone.</p>
+<h1 id="what-pandoc-does-is-black-magic">What pandoc does is black magic</h1>
+<p>Please play along or it won&rsquo;t stick in your brain.
+Open this terminal and <em>retype</em> these commands.
+Copy-pasting is for the weak.</p>
+<h2 id="write-in-markdown">Write in markdown</h2>
+<p>Start a new project, shoot a markdown-written readme.</p>
+<pre><code>mkdir my_awesome_pdf_project
+cd my_awesome_pdf_project
+touch README.md
+</code></pre>
+<p>Write in <code>README.md</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># My awesome PDF project
+</span><span class="gh"></span>
+This simple readme shall become a PDF, or my name is not
+</code></pre></td></tr></table>
+</div>
+</div><p>And then customize it with your name:</p>
+<pre><code>echo &quot;$USER.&quot; &gt;&gt; README.md
+</code></pre>
+<h2 id="get-started-with-pandoc">Get started with pandoc</h2>
+<p>To gain a good understanding of how pandoc works, let&rsquo;s convert this markdown to HTML.
+This will help understand how pandoc works.
+Everyone knows some HTML, even my 4 year-old nephew. You won&rsquo;t have any excuse.</p>
+<p>We will:</p>
+<ul>
+<li>ask pandoc to take <code>README.md</code> as an input</li>
+<li>churn out a <code>README.html</code> file as an output.</li>
+</ul>
+<p>Type after me:</p>
+<pre><code>pandoc README.md --output README.html --standalone
+</code></pre>
+<p>Don&rsquo;t mind the text warnings. Open the html file</p>
+<pre><code>firefox README.html
+</code></pre>
+<p>or if you will</p>
+<pre><code>chrome README.html
+</code></pre>
+<p>or safari, or chromium. You get the idea. Here&rsquo;s how the HTML displays in the browser:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/2022/awesome_pdf_with_eisvogel/images/my_awesome_pdf_html.png"
+        data-srcset="/2022/awesome_pdf_with_eisvogel/images/my_awesome_pdf_html.png, /2022/awesome_pdf_with_eisvogel/images/my_awesome_pdf_html.png 1.5x, /2022/awesome_pdf_with_eisvogel/images/my_awesome_pdf_html.png 2x"
+        data-sizes="auto"
+        alt="/2022/awesome_pdf_with_eisvogel/images/my_awesome_pdf_html.png"
+        title="The awesome html generated by pandoc" /></p>
+<p>What happened is,
+pandoc went through <code>README.md</code>,
+converted markdown markup into HTML markup. <code>#</code> became <code>&lt;h1&gt;</code>, etc., and <em>voilà</em>!</p>
+<p>(it wrote some more stuff on top of that, we&rsquo;ll get to it)</p>
+<p>That&rsquo;s pretty neat, but how about actual PDFs?</p>
+<h2 id="how-pandoc-converts-markdown-to-pdf">How pandoc converts markdown to PDF</h2>
+<p><em>&ldquo;I see were you&rsquo;re going, Emmanuel. I just need to type</em></p>
+<pre><code>pandoc README.md -o README.pdf
+</code></pre>
+<p><em>and I will have my PDF&rdquo;</em>.</p>
+<p>Well, yes, but also, no.<br>
+You may succeed at first and be joyful.<br>
+And you may just as well witness your enthusiasm crash splendidly, like a wave on the solid rock of reality.</p>
+<p>If you think this whole markdown-to-html stuff was easy and you wish for some more serious headache,
+you&rsquo;re about to be served.</p>
+<p>Let&rsquo;s go slowly about it.
+I have gained this knowledge with sweat and tears, it <em>must</em> be passed on.
+If you want to do it the easy way, you have to understand how it is done the hard way.</p>
+<h3 id="from-markdown-to-latex">From markdown to LaTeX</h3>
+<p>Please type:</p>
+<pre><code>pandoc README.md -o README.tex
+</code></pre>
+<p>and have a look at <code>README.tex</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\hypertarget</span><span class="nb">{</span>my-awesome-pdf-project<span class="nb">}{</span><span class="c">%
+</span><span class="c"></span><span class="k">\section</span><span class="nb">{</span>My awesome PDF project<span class="nb">}</span><span class="k">\label</span><span class="nb">{</span>my-awesome-pdf-project<span class="nb">}}</span>
+This simple readme shall become a PDF, or my name is not emmanuel.
+</code></pre></td></tr></table>
+</div>
+</div><p>This is what LaTeX markup looks like. A bit verbose, but it looks serious.
+However, if you are even remotely familiar with LaTeX, you&rsquo;ll notice some important markup is missing,
+like the very important <code>\documentclass</code> line that basically says:
+&ldquo;This document is a book / a memoire / an article, please typeset it accordingly&rdquo;.</p>
+<p>If you&rsquo;re clever enough, you&rsquo;ll have the intuition of typing instead:</p>
+<pre><code>pandoc README.md -o README.tex --standalone
+</code></pre>
+<p>And boom ! Your <code>README.tex</code> looks a whole lot different now,
+with a <code>\documentClass{article}</code> and a lot of <code>\usepackage</code> statements and so on.
+That will make a neat PDF later on.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="c">% Options for packages loaded elsewhere
+</span><span class="c"></span><span class="k">\PassOptionsToPackage</span><span class="nb">{</span>unicode<span class="nb">}{</span>hyperref<span class="nb">}</span>
+<span class="k">\PassOptionsToPackage</span><span class="nb">{</span>hyphens<span class="nb">}{</span>url<span class="nb">}</span>
+<span class="c">%
+</span><span class="c"></span><span class="k">\documentclass</span>[
+]<span class="nb">{</span>article<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>amsmath,amssymb<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>lmodern<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>iftex<span class="nb">}</span>
+<span class="k">\ifPDFTeX</span>
+  <span class="k">\usepackage</span><span class="na">[T1]</span><span class="nb">{</span>fontenc<span class="nb">}</span>
+  <span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
+  <span class="k">\usepackage</span><span class="nb">{</span>textcomp<span class="nb">}</span> <span class="c">% provide euro and other symbols
+</span><span class="c"></span><span class="k">\else</span> <span class="c">% if luatex or xetex
+</span><span class="c"></span>  <span class="k">\usepackage</span><span class="nb">{</span>unicode-math<span class="nb">}</span>
+  <span class="k">\defaultfontfeatures</span><span class="nb">{</span>Scale=MatchLowercase<span class="nb">}</span>
+  <span class="k">\defaultfontfeatures</span><span class="na">[\rmfamily]</span><span class="nb">{</span>Ligatures=TeX,Scale=1<span class="nb">}</span>
+<span class="k">\fi</span>
+<span class="c">% Use upquote if available, for straight quotes in verbatim environments
+</span><span class="c"></span><span class="k">\IfFileExists</span><span class="nb">{</span>upquote.sty<span class="nb">}{</span><span class="k">\usepackage</span><span class="nb">{</span>upquote<span class="nb">}}{}</span>
+<span class="k">\IfFileExists</span><span class="nb">{</span>microtype.sty<span class="nb">}{</span><span class="c">% use microtype if available
+</span><span class="c"></span>  <span class="k">\usepackage</span><span class="na">[]</span><span class="nb">{</span>microtype<span class="nb">}</span>
+  <span class="k">\UseMicrotypeSet</span><span class="na">[protrusion]</span><span class="nb">{</span>basicmath<span class="nb">}</span> <span class="c">% disable protrusion for tt fonts
+</span><span class="c"></span><span class="nb">}{}</span>
+<span class="k">\makeatletter</span>
+<span class="k">\@</span>ifundefined<span class="nb">{</span>KOMAClassName<span class="nb">}{</span><span class="c">% if non-KOMA class
+</span><span class="c"></span>  <span class="k">\IfFileExists</span><span class="nb">{</span>parskip.sty<span class="nb">}{</span><span class="c">%
+</span><span class="c"></span>    <span class="k">\usepackage</span><span class="nb">{</span>parskip<span class="nb">}</span>
+  <span class="nb">}{</span><span class="c">% else
+</span><span class="c"></span>    <span class="k">\setlength</span><span class="nb">{</span><span class="k">\parindent</span><span class="nb">}{</span>0pt<span class="nb">}</span>
+    <span class="k">\setlength</span><span class="nb">{</span><span class="k">\parskip</span><span class="nb">}{</span>6pt plus 2pt minus 1pt<span class="nb">}}</span>
+<span class="nb">}{</span><span class="c">% if KOMA class
+</span><span class="c"></span>  <span class="k">\KOMAoptions</span><span class="nb">{</span>parskip=half<span class="nb">}}</span>
+<span class="k">\makeatother</span>
+<span class="k">\usepackage</span><span class="nb">{</span>xcolor<span class="nb">}</span>
+<span class="k">\IfFileExists</span><span class="nb">{</span>xurl.sty<span class="nb">}{</span><span class="k">\usepackage</span><span class="nb">{</span>xurl<span class="nb">}}{}</span> <span class="c">% add URL line breaks if available
+</span><span class="c"></span><span class="k">\IfFileExists</span><span class="nb">{</span>bookmark.sty<span class="nb">}{</span><span class="k">\usepackage</span><span class="nb">{</span>bookmark<span class="nb">}}{</span><span class="k">\usepackage</span><span class="nb">{</span>hyperref<span class="nb">}}</span>
+<span class="k">\hypersetup</span><span class="nb">{</span>
+  hidelinks,
+  pdfcreator=<span class="nb">{</span>LaTeX via pandoc<span class="nb">}}</span>
+<span class="k">\urlstyle</span><span class="nb">{</span>same<span class="nb">}</span> <span class="c">% disable monospaced font for URLs
+</span><span class="c"></span><span class="k">\setlength</span><span class="nb">{</span><span class="k">\emergencystretch</span><span class="nb">}{</span>3em<span class="nb">}</span> <span class="c">% prevent overfull lines
+</span><span class="c"></span><span class="k">\providecommand</span><span class="nb">{</span><span class="k">\tightlist</span><span class="nb">}{</span><span class="c">%
+</span><span class="c"></span>  <span class="k">\setlength</span><span class="nb">{</span><span class="k">\itemsep</span><span class="nb">}{</span>0pt<span class="nb">}</span><span class="k">\setlength</span><span class="nb">{</span><span class="k">\parskip</span><span class="nb">}{</span>0pt<span class="nb">}}</span>
+<span class="k">\setcounter</span><span class="nb">{</span>secnumdepth<span class="nb">}{</span>-<span class="k">\maxdimen</span><span class="nb">}</span> <span class="c">% remove section numbering
+</span><span class="c"></span><span class="k">\ifLuaTeX</span>
+  <span class="k">\usepackage</span><span class="nb">{</span>selnolig<span class="nb">}</span>  <span class="c">% disable illegal ligatures
+</span><span class="c"></span><span class="k">\fi</span>
+
+<span class="k">\author</span><span class="nb">{}</span>
+<span class="k">\date</span><span class="nb">{}</span>
+
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+
+<span class="k">\hypertarget</span><span class="nb">{</span>my-awesome-pdf-project<span class="nb">}{</span><span class="c">%
+</span><span class="c"></span><span class="k">\section</span><span class="nb">{</span>My awesome PDF project<span class="nb">}</span><span class="k">\label</span><span class="nb">{</span>my-awesome-pdf-project<span class="nb">}}</span>
+
+This simple readme shall become a PDF, or my name is not
+emmanuel.
+
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="pandoc-uses-templates">Pandoc uses templates</h3>
+<p>What happened here? Well, the mission of pandoc is to convert from one markup to another.
+A markdown&rsquo;s <code>*word*</code> becomes an HTML <code>&lt;em&gt;word&lt;/em&gt;</code> becomes a TeX <code>\emph{word}</code>.
+Pretty straightforward.</p>
+<p>But when dealing with complex document formats like HTML or LaTeX,
+we need a bunch of lines that say <code>&lt;DOCTYPE html&gt;</code> or <code>\documentClass{article}</code>,
+and give precisions about the fonts used, the CSS or JavaScript files attached (in case of HTML)
+or the font size, the page format, the indentation of paragraphs (in case of LaTeX).
+So pandoc has this <code>--standalone</code> flag that summons default values.
+In the pandoc world, these defaults are stored in <em>templates</em>.</p>
+<p>Have a look at the HTML default template by doing:</p>
+<pre><code>pandoc -D html
+</code></pre>
+<p>You should recognize a lot of things.
+Head, meta, style, body… within some weird dollar-sign-surrounded if statements.
+This is pandoc&rsquo;s own way of generating boiler-plate HTML headers.</p>
+<p>Same if you do:</p>
+<pre><code>pandoc -D latex
+</code></pre>
+<p>You will get a much more frightening blurb of interwoven LaTeX and pandoc-specific syntax.
+Please know that this exists, and that it is used when converting markdown to LaTeX with the <code>--standalone</code> flag.
+Please type this command if you haven&rsquo;t yet:</p>
+<pre><code>pandoc README.md -o README.tex --standalone
+</code></pre>
+<p>and have a longer, curious look at the generated <code>README.tex</code>.</p>
+<h3 id="from-latex-to-pdf">From LaTeX to PDF</h3>
+<p>From here on I&rsquo;m not a specialist.
+The world of LaTeX is weird and intricate, full of weird and intricate history,
+populated by weird and intricate people (gosh, I am becoming one of them).
+The learning curve is hard and I feel like an impostor even writing about it.</p>
+<p>Be kind with yourself. If anything fails, skip this paragraph and go on with the tutorial.</p>
+<p>Let&rsquo;s make an actual PDF. Try those commands randomly untif one of them work:</p>
+<pre><code>latex README.tex
+xelatex README.tex
+pdflatex README.tex
+</code></pre>
+<p>Those are all PDF engines.
+If the gods are on your side, one of those commands won&rsquo;t fail and produce a <code>README.pdf</code>.
+Look it up. Admire it. Be proud of yourself.</p>
+<h3 id="to-sum-up-what-pandoc-does">To sum up what pandoc does</h3>
+<p>When you type <code>pandoc README.md -o README.pdf</code>, pandoc does those things:</p>
+<ol>
+<li>Convert the markdown markup to LaTeX markup</li>
+<li>Summon a default template to create LaTeX-specific statements like <code>\documentClass</code></li>
+<li>Merge everything in a neat <code>.tex</code> document</li>
+<li>Invoke a PDF engine necromant,
+to raise the <code>.tex</code> file from the dead realm of text
+onto the battlefield of our paper-dominated world.</li>
+</ol>
+<h1 id="make-it-easy-please">Make it easy please</h1>
+<p>I have told you what I have learned. And for a while, what I have done was this:</p>
+<ol>
+<li>Write in markdown</li>
+<li>Store the default pandoc template within a <code>template.tex</code> file</li>
+<li>Edit <code>template.tex</code> to attain desired margins, fonts, etc (difficult)</li>
+<li>Do everything detailed above, in a bash script, plus the pandoc option: <code>--template=templatex.tex</code></li>
+</ol>
+<p>This was great for learning purposes, but I now deserve simplicity, and so do you, dear reader.</p>
+<p>Let us discover <a href="https://github.com/Wandmalfarbe/pandoc-latex-template" target="_blank" rel="noopener noreffer"><strong><em>Eisvogel</em></strong></a>.
+It boils down to <em>replacing the default template used by pandoc when creating <code>.tex</code> files</em>.</p>
+<h2 id="step-by-step">Step by step</h2>
+<p>Create another new project folder called <code>use_eisvogel</code>.</p>
+<pre><code>mkdir use_eisvogel
+cd use_eisvogel
+</code></pre>
+<p>Copy-paste <a href="https://github.com/Wandmalfarbe/pandoc-latex-template/blob/master/eisvogel.tex" target="_blank" rel="noopener noreffer">the eisvogel.tex template</a>
+from the official repository into you project folder.</p>
+<pre><code>wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex
+</code></pre>
+<p>(or with curl if you prefer)</p>
+<pre><code>curl https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex &gt; eisvogel.tex
+</code></pre>
+<p>Create a <code>document.md</code>, in which you will write:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">---
+title: &#34;My awesome PDF&#34;
+subtitle: &#34;I kept retyping commands and it kept working&#34;
+author: &#34;Me, Myself and I&#34;
+geometry: margin=2cm
+titlepage: true
+---
+
+<span class="gh"># First chapter
+</span><span class="gh"></span>
+Once upon a time, LaTeX was made, and it was good.
+Then Microsoft Word was invented, and it was widely regarded as a bad move.
+
+<span class="gu">## Some section
+</span><span class="gu"></span>
+| column | colunn 2 |
+| ------ | -------- |
+| row    | data     |
+| what   | ever     |
+
+<span class="gh"># Second chapter
+</span><span class="gh"></span>
+Here is some code:
+
+<span class="s">```rust
+</span><span class="s"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;Hello world!&#34;</span><span class="p">);</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="s">```</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Create a bash script, make it executable:</p>
+<pre><code>touch build.sh
+chmod +x build.sh
+</code></pre>
+<p>Write in it:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/env bash
+</span><span class="cp"></span>
+pandoc document.md <span class="se">\
+</span><span class="se"></span>    -o document.pdf <span class="se">\
+</span><span class="se"></span>    --template eisvogel.tex <span class="se">\
+</span><span class="se"></span>    --listings
+</code></pre></td></tr></table>
+</div>
+</div><p>Execute the script (make sure you made it executable):</p>
+<pre><code>./build.sh
+</code></pre>
+<p>If all went smooth, you should have a nice <code>document.pdf</code>.</p>
+<h2 id="go-on-your-own-journey">Go on your own journey</h2>
+<p>The <a href="https://github.com/Wandmalfarbe/pandoc-latex-template" target="_blank" rel="noopener noreffer">Eisvogel repository</a>
+is full of examples and of easy-to-use variables to play around.</p>
+<p>You&rsquo;re on your own now.<br>
+Coding is hard, do only what you enjoy.<br>
+Be kind to yourself.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-02-20&nbsp;<a class="git-hash" href="https://github.com/keksoj/blog/commit/50e958687da02f2ed196bc9f87aefdd7563a570c" target="_blank" title="commit by Emmanuel Bosquet(bjokac@gmail.com) 50e958687da02f2ed196bc9f87aefdd7563a570c: eisvogel tutorial">
+                                    <i class="fas fa-hashtag fa-fw"></i>50e9586</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2022/awesome_pdf_with_eisvogel/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/2022/awesome_pdf_with_eisvogel/" data-title="How to make awesome PDFs with markdown using Eisvogel" data-via="EmmanuelBosquet"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/2022/awesome_pdf_with_eisvogel/"><i class="fab fa-facebook-square fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/whatsaunixsocket/" class="prev" rel="prev" title="Unix sockets, the basics in Rust"><i class="fas fa-angle-left fa-fw"></i>Unix sockets, the basics in Rust</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://emmanuelbosquet.com" target="_blank">Emmanuel Bosquet</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
