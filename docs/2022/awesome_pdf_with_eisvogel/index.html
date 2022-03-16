@@ -200,8 +200,8 @@ LaTeX is the language of the gods.</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex">s<span class="nb">_</span>N = <span class="k">\sqrt</span><span class="nb">{</span><span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>N<span class="nb">}</span> <span class="k">\sum</span><span class="nb">_{</span>i=1<span class="nb">}^</span>N <span class="k">\left</span>(x<span class="nb">_</span>i - <span class="k">\bar</span><span class="nb">{</span>x<span class="nb">}</span><span class="k">\right</span>)<span class="nb">^</span>2<span class="nb">}</span>.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="cl">s<span class="nb">_</span>N = <span class="k">\sqrt</span><span class="nb">{</span><span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>N<span class="nb">}</span> <span class="k">\sum</span><span class="nb">_{</span>i=1<span class="nb">}^</span>N <span class="k">\left</span>(x<span class="nb">_</span>i - <span class="k">\bar</span><span class="nb">{</span>x<span class="nb">}</span><span class="k">\right</span>)<span class="nb">^</span>2<span class="nb">}</span>.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>becomes</p>
 <p><img
@@ -248,10 +248,10 @@ touch README.md
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># My awesome PDF project
-</span><span class="gh"></span>
-This simple readme shall become a PDF, or my name is not
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="gh"># My awesome PDF project
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>
+</span></span><span class="line"><span class="cl">This simple readme shall become a PDF, or my name is not
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>And then customize it with your name:</p>
 <pre><code>echo &quot;$USER.&quot; &gt;&gt; README.md
@@ -313,10 +313,10 @@ If you want to do it the easy way, you have to understand how it is done the har
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="k">\hypertarget</span><span class="nb">{</span>my-awesome-pdf-project<span class="nb">}</span>
-<span class="k">\section</span><span class="nb">{</span>My awesome PDF project<span class="nb">}</span><span class="k">\label</span><span class="nb">{</span>my-awesome-pdf-project<span class="nb">}}</span>
-This simple readme shall become a PDF, or my name is not emmanuel.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\hypertarget</span><span class="nb">{</span>my-awesome-pdf-project<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\section</span><span class="nb">{</span>My awesome PDF project<span class="nb">}</span><span class="k">\label</span><span class="nb">{</span>my-awesome-pdf-project<span class="nb">}}</span>
+</span></span><span class="line"><span class="cl">This simple readme shall become a PDF, or my name is not emmanuel.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>This is what LaTeX markup looks like. A bit verbose, but it looks serious.
 However, if you are even remotely familiar with LaTeX, you&rsquo;ll notice some important markup is missing,
@@ -434,36 +434,36 @@ from the official repository into you project folder.</p>
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">---
-title: &#34;My awesome PDF&#34;
-subtitle: &#34;I kept retyping commands and it kept working&#34;
-author: &#34;Me, Myself and I&#34;
-geometry: margin=2cm
-titlepage: true
----
-
-<span class="gh"># First chapter
-</span><span class="gh"></span>
-Once upon a time, LaTeX was made, and it was good.
-Then Microsoft Word was invented, and it was widely regarded as a bad move.
-
-<span class="gu">## Some section
-</span><span class="gu"></span>
-| column | colunn 2 |
-| ------ | -------- |
-| row    | data     |
-| what   | ever     |
-
-<span class="gh"># Second chapter
-</span><span class="gh"></span>
-Here is some code:
-
-<span class="s">```rust
-</span><span class="s"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;Hello world!&#34;</span><span class="p">);</span><span class="w">
-</span><span class="w"></span><span class="p">}</span><span class="w">
-</span><span class="w"></span><span class="s">```</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: &#34;My awesome PDF&#34;
+</span></span><span class="line"><span class="cl">subtitle: &#34;I kept retyping commands and it kept working&#34;
+</span></span><span class="line"><span class="cl">author: &#34;Me, Myself and I&#34;
+</span></span><span class="line"><span class="cl">geometry: margin=2cm
+</span></span><span class="line"><span class="cl">titlepage: true
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gh"># First chapter
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>
+</span></span><span class="line"><span class="cl">Once upon a time, LaTeX was made, and it was good.
+</span></span><span class="line"><span class="cl">Then Microsoft Word was invented, and it was widely regarded as a bad move.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gu">## Some section
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>
+</span></span><span class="line"><span class="cl">| column | colunn 2 |
+</span></span><span class="line"><span class="cl">| ------ | -------- |
+</span></span><span class="line"><span class="cl">| row    | data     |
+</span></span><span class="line"><span class="cl">| what   | ever     |
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gh"># Second chapter
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>
+</span></span><span class="line"><span class="cl">Here is some code:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="s">```rust
+</span></span></span><span class="line"><span class="cl"><span class="s"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;Hello world!&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="s">```</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Create a bash script, make it executable:</p>
 <pre><code>touch build.sh
@@ -480,13 +480,13 @@ chmod +x build.sh
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/env bash
-</span><span class="cp"></span>
-pandoc document.md <span class="se">\
-</span><span class="se"></span>    -o document.pdf <span class="se">\
-</span><span class="se"></span>    --template eisvogel.tex <span class="se">\
-</span><span class="se"></span>    --listings
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/usr/bin/env bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl">pandoc document.md <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -o document.pdf <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --template eisvogel.tex <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --listings
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Execute the script (make sure you made it executable):</p>
 <pre><code>./build.sh
@@ -528,7 +528,7 @@ Be kind to yourself.</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://emmanuelbosquet.com" target="_blank">Emmanuel Bosquet</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

@@ -15,7 +15,8 @@ I couldn't stand pretending to be a healthy human being, so here is the truth.
 -   **2010-10**, _Frankfurt_. Searching for a job in Germany, ended in intense feelings of depression and worthlessness.
 -   **2011-01 - 2011-03**, _Israel & Berlin_. Esperanto meetings, visiting Israel, hanging in Berlin and -surprise- doing drugs.
 -   **2015-01 - 2015-03**, _Caen, Normandy_. Dropped out of university, searched for a job in an unrelated field, feeling miserable and inadequate.
--   **2018-09**, _India_. Visiting northern India and getting scammed of all my money.
+-   **2018-09**, _India_. Visiting northern India and losing all my life savings in an elaborate scam.
 -   **2018-10**, _Köln, Germany_. Trying to make a new life in Germany. Oh hi, worthlessness, I didn't miss you.
--   **2019-01 - 2020-07**, _Caen, Normandy_. Learned programming on my own, living on unemployment benefits.
+-   **2019-01 - 2021-02**, _Caen, Normandy_. Learned programming on my own, living on unemployment benefits, then spent six months looking for a job, facing refusal after refusal. Strong feelings of inadequacy and sadness.
+
 
