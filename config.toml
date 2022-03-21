@@ -143,7 +143,7 @@ enableEmoji = true
           # title shown in home page (HTML format is supported)
           title = ""
           # subtitle shown in home page
-          subtitle = "A blog to write about technology."
+          subtitle = "Read here what goes through my head and has to go public."
           # whether to use typeit animation for subtitle
           typeit = true
           # whether to show social links
@@ -161,7 +161,7 @@ enableEmoji = true
         Linkedin = "emmanuelbosquet"
         Twitter = "EmmanuelBosquet"
         Gitlab = "emmanuel_bosquet"
-        Instagram = "emmanuelserebiffe"
+        Instagram = "emmanuel_se_rebiffe"
         # Youtubechannel = ""
         # Steam = ""
         # Twitch = ""
