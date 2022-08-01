@@ -41,3 +41,13 @@ There is a submodule attached, so be sure to try:
 
 Check that hugo is installed on the machine.
 It is packaged for Arch at least.
+
+### Run locally
+
+    hugo serve
+
+Then check `localhost:1313`.
+
+### Generate the static site
+
+    hugo
