@@ -200,7 +200,7 @@ Perfect! The server is waiting for connections!
 
 ## Connecting to the socket, client side
 
-The client process wants to connect to an existing socket, read an write from it.
+The client process wants to connect to an existing socket, read and write from it.
 
 Next to `server.rs`, create the `client.rs` file.
 The client will merely consist of a `UnixStream`:
