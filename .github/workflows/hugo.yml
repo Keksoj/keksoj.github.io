@@ -43,6 +43,9 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2
+      - name: debug base url
+        run: |
+          echo "${{ steps.pages.outputs.base_url }}/"
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
