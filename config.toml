@@ -1,8 +1,8 @@
 baseURL = '/'
 languageCode = 'en-us'
 
-# for github pages deployment, we have to replace the default "public" with "docs"
-publishdir = "docs"
+# for github action, this must be "public"
+publishdir = "public"
 
 
 # [en, zh-cn, fr, pl, ...] determines default content language
