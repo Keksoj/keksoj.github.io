@@ -126,9 +126,9 @@ We will:
 
 Type after me:
 
-    pandoc README.md --output README.html --standalone
+    pandoc README.md --output README.html
 
-Don't mind the text warnings. Open the html file
+Then open the html file
 
     firefox README.html
 
@@ -144,7 +144,9 @@ What happened is,
 pandoc went through `README.md`,
 converted markdown markup into HTML markup. `#` became `<h1>`, etc., and _voilà_!
 
-(it wrote some more stuff on top of that, we'll get to it)
+If you want a complete HTML page with a `<head>` and some default CSS, you can do:
+
+    pandoc README.md --output README.html --standalone
 
 That's pretty neat, but how about actual PDFs?
 
@@ -173,7 +175,7 @@ Please type:
 
     pandoc README.md -o README.tex
 
-and have a look at `README.tex`:
+and have a look at `README.tex` that looks like this:
 
 ```latex
 \hypertarget{my-awesome-pdf-project}
@@ -242,7 +244,7 @@ Let's make an actual PDF. Try those commands randomly untif one of them work:
     xelatex README.tex
     pdflatex README.tex
 
-Those are all PDF engines.
+Those are all PDF engines. Try to install them, or one of them.
 If the gods are on your side, one of those commands won't fail and produce a `README.pdf`.
 Look it up. Admire it. Be proud of yourself.
 
@@ -301,7 +303,7 @@ titlepage: true
 # First chapter
 
 Once upon a time, LaTeX was made, and it was good.
-Then Microsoft Word was invented, and it was widely regarded as a bad move.
+Then Microsoft Word was invented. This made a lot of people angry was widely regarded as a bad move.
 
 ## Some section
 
