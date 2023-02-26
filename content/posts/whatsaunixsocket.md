@@ -381,7 +381,7 @@ You can run the client as many times as you want, since the server runs in a loo
 This tutorial comes with a [github repository](https://github.com/Keksoj/unix_sockets_basics)
 that contains the above code.
 
-Feel free to write an issue for any comment, cricic or complaint you may have.
+Feel free to write an issue for any comment, criticism, or complaint you may have.
 Fork and do pull requests as you please.
 
 This blog post is a sum-up of what I learned trying to understand unix sockets while working on Sōzu.
@@ -393,5 +393,5 @@ with additional features:
 -   a `Message` module with serializable `Request` and `Response` structs. The Response has a status that is either `Ok`, `Error` or `Processing`
 -   a client loop that continues reading the stream as long as responses come with a `Processing` status, to stops only at `Ok` or `Error`
 
-All this happened thanks to my employer, [Clever Cloud](clever-cloud.com/),
+All this happened thanks to my employer, [Clever Cloud](https://clever-cloud.com/),
 who allows me to learn my job in the best possible conditions. Much gratitude.
