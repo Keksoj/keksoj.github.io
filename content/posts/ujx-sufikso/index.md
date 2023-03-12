@@ -111,8 +111,8 @@ Heeeeee?
 La argumento tre klaras, sed laŭ mi tute maltrafas sian celon.
 La lingvo ne estas nur ilo por detale priskribi la mondon.
 La lingvo ankaŭ utilas por sin esprimi kiel eble plej efike, kun malpli da silaboj, tiel ke
-ni havu simplajn vortoj por simplajn sentojn. Tiucele, sufikso pli potencas ol adjektivo.
-_Varmuĵa_ ege pli efikas por esprimi propra kontentiĝon ol _plaĉe varma_, kiu gustas
+ni havu simplajn vortojn por simplaj sentoj. Tiucele, sufikso pli potencas ol adjektivo.
+_Varmuĵa_ ege pli efikas por esprimi propran kontentiĝon ol _plaĉe varma_, kiu gustas
 pli kiel libra lingvo.  
 Kiu volas lerti, lertu. Sed lasu nin uĵumi!
 
@@ -160,7 +160,7 @@ tiu simpla pepo:
 
 ![Grafo Maĥiac Korako pepas la vorton "uĵumado"](/2022/ujx-sufikso/images/ujxumado_ekrankopio.png)
 
-Miaj okuloj eliris iliajn kavojn.
+Miaj okuloj eliris siajn kavojn.
 Mi tuj [petis je klarigo](https://twitter.com/mahxiackorvo/status/1553245366572630017).
 JES. Sama sufikso, sama signifo.
 
