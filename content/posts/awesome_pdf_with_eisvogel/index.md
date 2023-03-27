@@ -35,7 +35,7 @@ But that's just the easy part.
 
 ## Install LaTeX and join the real cult
 
-Enter LaTeX, one of the oldest peaces of software still in use today.
+Enter LaTeX, one of the oldest pieces of software still in use today.
 LaTeX started a bit like the GNU project.
 Some nitpicking bloke with too many free time on his hands and a lot of brain cells to burn
 decided that his book was not properly typeset.
@@ -117,7 +117,7 @@ And then customize it with your name:
 
 To gain a good understanding of how pandoc works, let's convert this markdown to HTML.
 This will help understand how pandoc works.
-Everyone knows some HTML, even my 4 year-old nephew. You won't have any excuse.
+Everyone knows some HTML, even my 4 year-old nephew knows some HTML. You won't have any excuse.
 
 We will:
 
@@ -215,7 +215,7 @@ Have a look at the HTML default template by doing:
 
 You should recognize a lot of things.
 Head, meta, style, body… within some weird dollar-sign-surrounded if statements.
-This is pandoc's own way of generating boiler-plate HTML headers.
+This is pandoc's own way of generating boilerplate HTML headers.
 
 Same if you do:
 
