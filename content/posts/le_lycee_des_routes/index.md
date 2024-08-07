@@ -8,7 +8,7 @@ Une nouvelle que j'ai écrite, où une bande d'adolescents qui ne se connaissent
 se retrouvent à devoir sauver le monde (wow comment c'est SUPER ORIGINAL).
 Ma foi je voulais m'amuser et j'ai laissé libre cours à mes pulsions jodorowskiennes.
 
-# [À lire ici](https://emmanuelbosquet.com/lyceedesroutes/)
+# [À lire ici (cliquez cliquez)](https://emmanuelbosquet.com/lyceedesroutes/)
 
 J'ai écrit cette nouvelle dans le but de faire tout un tas d'erreurs dont je pourrais apprendre. Voilà ce que j’ai appris :
 
