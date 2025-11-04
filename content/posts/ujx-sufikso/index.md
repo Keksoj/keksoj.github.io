@@ -4,7 +4,7 @@ date: 2022-07-31
 draft: false
 ---
 
-![Vi estas homuĵo](/2022/ujx-sufikso/images/vi_estas_homujxo.jpg)
+![Vi estas homuĵo](images/vi_estas_homujxo.jpg)
 
 uĵ- estas malo de aĉ-. _"Kia homuĵo!"_
 
@@ -158,7 +158,7 @@ Esperantlingvanoj pepas mojosaĵojn.
 Kia surprizo kiam iu tago aperis
 tiu simpla pepo:
 
-![Grafo Maĥiac Korako pepas la vorton "uĵumado"](/2022/ujx-sufikso/images/ujxumado_ekrankopio.png)
+![Grafo Maĥiac Korako pepas la vorton "uĵumado"](images/ujxumado_ekrankopio.png)
 
 Miaj okuloj eliris siajn kavojn.
 Mi tuj [petis je klarigo](https://twitter.com/mahxiackorvo/status/1553245366572630017).
@@ -171,7 +171,7 @@ Mi do interŝanĝis mesaĝuĵojn kun Grafo Maĥiac Korako (kia kromnomo!),
 rememorante pri tiuj frenezaj jaruĵoj
 kiam Esperanto okupis grandan parton de mia ĉiutaga vivo.
 
-Mi eble pluverkos tiun "reapero" sekcion de la artikolo, do ne hezitu [skribi al mi](bjokac@gmail.com)
+Mi eble pluverkos tiun "reapero" sekcion de la artikolo, do ne hezitu [skribi al mi](mailto:keksoj@proton.me)
 se vi havas iajn komentojn aŭ informojn pri uĵ!
 
 Korajn brakumojn al vi mojosuloj kaj homuĵoj!
