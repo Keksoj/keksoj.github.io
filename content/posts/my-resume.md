@@ -33,7 +33,7 @@ I went on a quest to learn programming.
 Advised by the awesome [Jean-Philippe Cugnet](https://github.com/ejpcmac),
 I learned Rust, and by extension, programming, with the [Rust book](https://doc.rust-lang.org/stable/book/) in 2019.
 
-I was a linux already, and learned the ropes of system administration by hosting a minecraft server
+I was a linux user already, and learned the ropes of system administration by hosting a minecraft server
 on a PC inherited from my dad, to play on with friends during the pandemic.
 
 I met with excellent developers in Caen, Normandy, who taught me what a REST-full API is,
