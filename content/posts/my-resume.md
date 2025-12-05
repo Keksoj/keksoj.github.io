@@ -85,7 +85,7 @@ In short, and to quote [my former boss Quentin Adam](https://www.linkedin.com/in
 
 Emphasis on **understand**.
 
-I shifted my perspective, from **"code is a toy"** to => **"code is a tool"**.
+I shifted my perspective, from **"code is a toy"**, to => **"code is a tool"**.
 
 This what I now believe:
 
@@ -99,11 +99,11 @@ This what I now believe:
   *whatever the language*.
 - **The highest quality of a developer is their ability to speak to humans**.
   One must be able to explain to humans what the code does,
-  and conversersely, the code must be readable by humans to have any value.
+  and conversely, the code must be readable by humans to have any value.
   Code that is only readable by machines is technical debt.
 - **AI is limited by one's technical knowledge**.
   Prompting the machine requires fulfilling all the previously defined qualities.
-  AI-generetade code must be proof-read by a capable human.
+  AI-generated code must be proof-read by a capable human.
   Generative AI, as of 2025 and without a capable human, writes technical debt.
 
 ### Hard Skills
@@ -122,7 +122,7 @@ This what I now believe:
 - **Good with words**, written and oral, in several languages (EN FR DE EO)
 - **Extraverted**. I like to reach out to other humans.
   I make sure everyone had the opportunity to speak, and that everyone understood the same thing.
-- **Drawing enthusiasm**. I like to draw things as I learn or explain them.
+- **Drawing enthusiast**. I like to draw things as I learn or explain them.
 
 ### What I'd like to do
 
