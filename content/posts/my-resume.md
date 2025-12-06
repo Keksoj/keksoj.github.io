@@ -52,7 +52,7 @@ talk with each other.
 
 The company developed its own hot-reloadable load balancer, starting in 2017, and called it [Sōzu](https://github.com/sozu-proxy/sozu).
 I had been developed almost single-handedly by [Geoffrey Couprie](https://github.com/Geal), the R&D person at the time.
-Over my time there I [refactored and wrote some 60.000 lines of Rust](https://github.com/sozu-proxy/sozu/graphs/contributors)
+Over my time there I [refactored and wrote some 60.000 lines of Rust](https://github.com/sozu-proxy/sozu/pulls?q=+is%3Apr+author%3AKeksoj+)
 in the project, to make the code a bit more human-readable and optimize its functioning.
 
 Over the years and under the guidance of [Florentin Dubois](https://github.com/FlorentinDUBOIS),
