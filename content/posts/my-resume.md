@@ -4,6 +4,8 @@ date: 2025-12-05T14:53:43+01:00
 draft: false
 ---
 
+More than a resume, this is a manifesto of what I aim to be as a developer.
+
 ### As a kid
 
 Born in 1986, I spent most of my childhood reading books and trying to understand the world.
