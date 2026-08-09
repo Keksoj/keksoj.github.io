@@ -21,7 +21,7 @@ I couldn't stand pretending to be a healthy human being, so here is the truth.
 -   **2018-09**, _India_. Visiting northern India and losing all my life savings in an elaborate scam.
 -   **2018-10**, _Köln, Germany_. Trying to make a new life in Germany. Oh hi, worthlessness, I didn't miss you.
 -   **2019-01 - 2021-02**, _Caen, Normandy_. Learned programming on my own, living on unemployment benefits, then spent six months looking for a job, facing refusal after refusal. Strong feelings of inadequacy and sadness.
--   **2026** (yes, the entire year), _Caen, Normandy_. Enjoyed unemployment, visited friends,
+-   **2025** (yes, the entire year), _Caen, Normandy_. Enjoyed unemployment, visited friends,
     walked the entire Camino de Santiago, reflected about starting my own business, wrote a book
     about my camino, waited until the perfect position opened at the company of my choice.
 
