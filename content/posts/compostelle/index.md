@@ -25,11 +25,13 @@ Plus ça avance, plus le chemin m'épluche émotionnellement.
 À la fin, il ne reste plus grand-chose d'Emmanuel, hormis l'essentiel,
 le petit garçon aux yeux grand ouverts sur le monde (et qui pleure tout le temps, mais bon).
 
-En plus des péripéties propres au chemin,
+En plus de ces péripéties,
 j'ai intercalé des notes culturelles et critiques sur l'histoire du chemin.
 C'est fou ce qu'on écrivait comme propagande au Moyen Âge !
-J'aborde aussi des questions cruciales, comme le problème des ronfleurs d'auberges,
-ou encore : *qu'est-ce qu'un vrai pèlerin ?* (on cherche encore).
+J'aborde aussi des problèmes pratiques,
+comme les ronfleurs d'auberges,
+ou encore la question cruciale:
+*qu'est-ce qu'un vrai pèlerin ?* (on cherche encore).
 
 Pour le lire, vous pouvez le **commander dans votre librairie préférée** en fournissant ces informations:
 
