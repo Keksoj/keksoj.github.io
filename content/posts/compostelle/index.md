@@ -10,7 +10,7 @@ Trop génial, j'ai écrit un livre sur mon chemin de Compostelle !
 
 Ce périple est parti de l'idée un peu débile que j'allais trouver l'amour au bout du chemin,
 à Saint-Jacques de Compostelle.
-Comme un héros de shōnen un peu borné, je me suis lancé de chez moi à Caen,
+Courageux et borné comme un héros de shōnen, je me suis lancé de chez moi à Caen,
 et j'y ai cru jusqu'au bout.
 
 Au cours des chapitres,
